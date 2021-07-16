@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-entity
-          position="0 0 0"
-          scale="0.25 0.25 0.25"
-          gltf-model="https://raw.githubusercontent.com/diozz/ar-tests/main/Bee.glb"
-        ></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<!-- we import arjs version without NFT but with marker + location based support -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<body style="margin : 0px; overflow: hidden;">
+  <section class="controls">
+    <button onclick="up()">Up</button>
+    <button onclick="down()">Down</button>
+  </section>
+  <a-scene embedded arjs>
+    <a-marker preset="hiro">
+      <a-entity position="0 0 0" scale="0.25 0.25 0.25"
+        gltf-model="https://raw.githubusercontent.com/diozz/ar-tests/main/Bee.glb"></a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
 </html>
+
+<script>
+  function up()
+  {
+    let tag = document.querySelector("body > a-scene > a-marker > a-entity")
+    let scale = tag.getAttribute('scale').x
+    scale += 0.05;
+    tag.object3D.scale.set(scale, scale, scale);
+  }
+  function down()
+  {
+    let tag = document.querySelector("body > a-scene > a-marker > a-entity")
+    let scale = tag.getAttribute('scale').x
+    scale -= 0.05;
+    tag.object3D.scale.set(scale, scale, scale);
+  }
+</script>
+
+<style>
+  button {
+    padding: 10px 15px;
+  }
+
+  .controls {
+    background-size: 90% 90%;
+    border: 0;
+    bottom: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    border-radius: 8px;
+  }
+</style>
