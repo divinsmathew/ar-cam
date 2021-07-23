@@ -50,26 +50,24 @@ window.onload = () =>
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
-        } 
+        }
         else if (rotateMode)
         {
-            if (moveMode)
+            let rotation = entity.getAttribute('rotation');
+            let direction = calculateDirection(event.detail.data[0].currentDirection);
+
+            if (!direction) return;
+
+            switch (direction)
             {
-                let rotation = entity.getAttribute('rotation');
-                let direction = calculateDirection(event.detail.data[0].currentDirection);
-    
-                if (!direction) return;
-    
-                switch (direction)
-                {
-                    case 'left': rotation.x -= 0.045; break;
-                    case 'right': rotation.x += 0.045; break;
-                }
-                entity.object3D.rotation.set(
-                    THREE.Math.degToRad(rotation.x),
-                    THREE.Math.degToRad(0),
-                    THREE.Math.degToRad(0)
-                  );
+                case 'left': rotation.x -= 0.045; break;
+                case 'right': rotation.x += 0.045; break;
+            }
+            entity.object3D.rotation.set(
+                THREE.Math.degToRad(rotation.x),
+                THREE.Math.degToRad(0),
+                THREE.Math.degToRad(0)
+            );
         }
     });
 }
