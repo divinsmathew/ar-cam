@@ -3,7 +3,7 @@ window.onload = () =>
     var square = document.getElementsByTagName('body')[0];
     var hammer = new Hammer(square);
 
-    hammer.get('pinch').set({ enable: true, pointers:2, threshold: 10});
+    hammer.get('pinch').set({ enable: true, pointers:2, threshold: 5});
 
     hammer.on('pinch', function(e) {
 

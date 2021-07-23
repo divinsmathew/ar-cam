@@ -7,20 +7,20 @@ button {
 }
 
 .controls {
-    background-color: #3c3c3cb7;
+    background-color: #00000049;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 120px;
-    height: 100vh;
+    min-height: 120px;
+    width: 100vw;
     border: 0;
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 0;
+    bottom: 0;
     z-index: 99999;
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .snap-button {
@@ -34,10 +34,12 @@ button {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 8px 10px rgba(0, 0, 0, 0.24);
     transition: box-shadow 80ms ease-in-out,
-                transform 80ms ease-in-out;
+                transform 80ms ease-in-out,
+                background-size 80ms ease-in;
     cursor: pointer;
 }
 .snap-button:active {
-    transform: rotate(35deg);
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.466);
+    transform: rotate(45deg);
+    background-size: 85px 85px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.37);
 }
