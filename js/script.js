@@ -20,26 +20,12 @@ window.onload = () =>
     var pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
     {
-        if (moveMode)
-        {
-            let factor = event.detail.change / 500.0;
-            let position = entity.getAttribute('position');
-            if ((position > 5 && factor > 0) || (position < 0.05 && factor < 0)) return;
-
-            position.x += 0.045;
-
-            entity.object3D.position.set(position.x, position.y, position.z);
-        }
-        else
-        {
-            let factor = event.detail.change / 500.0;
-            let scale = entity.getAttribute('scale').x;
-            if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
-            scale += factor;
-
-            entity.object3D.scale.set(scale, scale, scale)
-            ttt.innerText = factor;
-        }
+        let factor = event.detail.change / 500.0;
+        let scale = entity.getAttribute('scale').x;
+        if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
+        scale += factor;
+        entity.object3D.scale.set(scale, scale, scale)
+        ttt.innerText = factor;
     });
 
     let swipe = new ZingTouch.Pan({
@@ -74,6 +60,9 @@ window.onload = () =>
 
             switch (direction)
             {
+                case 'up': position.z -= 1.5; break;
+                case 'down': position.z += 1.5; break;
+
                 case 'left': rotation.x -= 1.5; break;
                 case 'right': rotation.x += 1.5; break;
             }
@@ -82,8 +71,6 @@ window.onload = () =>
                 THREE.Math.degToRad(rotation.y),
                 THREE.Math.degToRad(rotation.z)
             );
-
-            console.log(direction)
         }
     });
 }
@@ -101,7 +88,7 @@ function calculateDirection(angle)
 
     */
 
-    if (angle <= 135 && angle > 45)
+        if (angle <= 135 && angle > 45)
         return 'up'
     else if (angle <= 225 && angle > 135)
         return 'left'
