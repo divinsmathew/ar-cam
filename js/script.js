@@ -1,14 +1,13 @@
 window.onload = () =>
 {
     var activeRegion = ZingTouch.Region(document.body);
-    var containerElement = document.getElementsByTagName('section')[0];
+    var containerElement = document.getElementsByTagName('a-scene')[0];
 
-    var myTapGesture = new ZingTouch.Tap({ maxDelay : 100 });
+    var myTapGesture = new ZingTouch.Distance();
     activeRegion.bind(containerElement, myTapGesture, function(event){
 
 
-        console.log('Custom Tap gesture emitted: ' + event);
-        alert('Custom Tap gesture emitted: ' + event);
+        console.log('Custom Tap gesture emitted: ',JSON.stringify(event));
 
 
     }, false);
