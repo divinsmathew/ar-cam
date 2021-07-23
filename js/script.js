@@ -34,18 +34,19 @@ window.onload = () =>
     })
     activeRegion.bind(containerElement, swipe, function (event)
     {
-        if(moveMode)
+        if (moveMode)
         {
             let position = entity.getAttribute('position');
             let direction = calculateDirection(event.detail.data[0].currentDirection);
-    
-            switch(direction){
-                case 'up': position.z += 0.01; break;
-                case 'left': position.x -= 0.01; break;
-                case 'down': position.z -= 0.01; break;
-                case 'right': position.x += 0.01; break;
+
+            switch (direction)
+            {
+                case 'up': position.z -= 0.075; break;
+                case 'left': position.x -= 0.075; break;
+                case 'down': position.z += 0.075; break;
+                case 'right': position.x += 0.075; break;
             }
-    
+
             entity.object3D.position.set(position.x, position.y, position.z);
         }
     });
