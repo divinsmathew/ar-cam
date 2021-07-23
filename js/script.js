@@ -39,6 +39,8 @@ window.onload = () =>
             let position = entity.getAttribute('position');
             let direction = calculateDirection(event.detail.data[0].currentDirection);
 
+            if (!direction) return;
+
             switch (direction)
             {
                 case 'up': position.z -= 0.045; break;
@@ -48,6 +50,26 @@ window.onload = () =>
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
+        } 
+        else if (rotateMode)
+        {
+            if (moveMode)
+            {
+                let rotation = entity.getAttribute('rotation');
+                let direction = calculateDirection(event.detail.data[0].currentDirection);
+    
+                if (!direction) return;
+    
+                switch (direction)
+                {
+                    case 'left': rotation.x -= 0.045; break;
+                    case 'right': rotation.x += 0.045; break;
+                }
+                entity.object3D.rotation.set(
+                    THREE.Math.degToRad(rotation.x),
+                    THREE.Math.degToRad(0),
+                    THREE.Math.degToRad(0)
+                  );
         }
     });
 }
@@ -65,14 +87,25 @@ function calculateDirection(angle)
 
     */
 
-    if (angle <= 135 && angle > 45)
+    //     if (angle <= 135 && angle > 45)
+    //     return 'up'
+    // else if (angle <= 225 && angle > 135)
+    //     return 'left'
+    // else if (angle <= 315 && angle > 225)
+    //     return 'down'
+    // else
+    //     return 'right'
+
+    if (angle === 90)
         return 'up'
-    else if (angle <= 225 && angle > 135)
+    else if (angle === 180)
         return 'left'
-    else if (angle <= 315 && angle > 225)
+    else if (angle === 270)
         return 'down'
-    else
+    else if (angle === 360)
         return 'right'
+    else
+        return null
 }
 
 function toggleMove()
