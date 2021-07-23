@@ -10,13 +10,12 @@ window.onload = () =>
     activeRegion.bind(containerElement, myTapGesture, function (event)
     {
         let factor = event.detail.change / 1.0;
-        
+
         let scale = el.getAttribute('rotation')
-        if(scale >5 || scale <-5) return;
         scale += factor;
 
-        console.log("xx",scale)
-        el.object3D.scale.set(scale,scale,scale);
+        console.table(scale)
+        el.object3D.scale.set(scale, scale, scale);
 
         ttt.innerText = scale;
 
