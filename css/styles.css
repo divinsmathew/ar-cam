@@ -7,12 +7,37 @@ button {
 }
 
 .controls {
-    background-size: 90% 90%;
+    background-color: #3c3c3cb7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    height: 100vh;
     border: 0;
-    bottom: 50px;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
+    top: 0;
     z-index: 99999;
-    border-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.snap-button {
+    background-image: url("../img/camera.svg");
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    min-width: 70px;
+    min-height: 70px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 8px 10px rgba(0, 0, 0, 0.24);
+    transition: box-shadow 80ms ease-in-out,
+                transform 80ms ease-in-out;
+    cursor: pointer;
+}
+.snap-button:active {
+    transform: rotate(35deg);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.466);
 }

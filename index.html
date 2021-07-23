@@ -3,7 +3,7 @@
 <script src="./js/three.min.js"></script>
 <script src="./js/aframe.min.js"></script>
 <script src="./js/aframe-ar.js"></script>
-<script src="./js/zingtouch.min.js"></script>
+<script src="./js/hammer.min.js"></script>
 
 <script src="./js/script.js"></script>
 
@@ -11,9 +11,12 @@
 
 <body style="margin : 0px; overflow: hidden;">
   <section class="controls">
-    <button onclick="X()">X</button>
+    <!-- <button onclick="X()">X</button>
     <button onclick="Y()">Y</button>
-    <button onclick="Z()">Z</button>
+    <button onclick="Z()">Z</button> -->
+    <div class="snap-button">
+      
+    </div>
   </section>
   <a-scene embedded arjs>
     <a-marker preset="hiro">

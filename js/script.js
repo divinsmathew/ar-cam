@@ -1,3 +1,22 @@
+window.onload = () =>
+{
+    var square = document.getElementsByTagName('body')[0];
+    var hammer = new Hammer(square);
+
+    hammer.get('pinch').set({ enable: true });
+
+    hammer.on('pinch', function(e) {
+
+        alert(e)
+      console.log(e);
+    });
+
+    var controls = document.getElementsByClassName('controls')[0];
+    controls.addEventListener('click', (e)=>{
+        e.stopPropagation();
+    })
+}
+
 
 function X()
 {
