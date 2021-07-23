@@ -1,22 +1,74 @@
+let moveMode = false;
+let rotateMode = false;
+
+let moveButton = undefined;
+let rotateButton = undefined;
+
+
+let entity = undefined;
+
 window.onload = () =>
 {
+    var ttt = document.getElementById('ttt');
+    moveButton = document.getElementById('move-button');
+    rotateButton = document.getElementById('rotate-button');
+
     var activeRegion = ZingTouch.Region(document.body);
     var containerElement = document.getElementsByTagName('a-scene')[0];
-    var ttt = document.getElementById('ttt');
-    let el = document.querySelector("body > a-scene > a-marker > a-entity")
+    entity = document.querySelector("body > a-scene > a-marker > a-entity")
 
-    var myTapGesture = new ZingTouch.Distance();
-    activeRegion.bind(containerElement, myTapGesture, function (event)
+    var pinch = new ZingTouch.Distance();
+    activeRegion.bind(containerElement, pinch, function (event)
     {
         let factor = event.detail.change / 500.0;
-        let scale = el.getAttribute('scale').x
-        if ((scale > 5 && factor > 0 )|| (scale < 0.05 && factor < 0)) return;
+        let scale = entity.getAttribute('scale').x;
+        if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
-        el.object3D.scale.set(scale, scale, scale);
+        entity.object3D.scale.set(scale, scale, scale);
+    });
+
+    var swipe = new ZingTouch.Swipe({
+        numInputs: 2,
+        maxRestTime: 100,
+        escapeVelocity: 0.25
+    });
+    activeRegion.bind(containerElement, swipe, function (event)
+    {
+        let factor = event.detail.currentDirection;
+        let position = entity.getAttribute('position');
+
+        ttt.innerText = factor;
+
     });
 }
 
-// ttt.innerText = scale;
+function toggleMove()
+{
+    if (moveMode)
+        moveButton.classList.remove('toggle-active')
+    else
+    {
+        moveButton.classList.add('toggle-active');
+        rotateButton.classList.remove('toggle-active')
+        rotateMode = false;
+    }
+
+    moveMode = !moveMode;
+}
+
+function toggleRotate()
+{
+    if (rotateMode)
+        rotateButton.classList.remove('toggle-active')
+    else
+    {
+        rotateButton.classList.add('toggle-active');
+        moveButton.classList.remove('toggle-active')
+        moveMode = false;
+    }
+
+    rotateMode = !rotateMode;
+}
 
 
 function X()

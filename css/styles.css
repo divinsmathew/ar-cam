@@ -7,9 +7,8 @@ button {
 }
 
 .controls {
-    background-color: #00000049;
+    background-color: #00000056;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 120px;
@@ -19,15 +18,48 @@ button {
     left: 0;
     bottom: 0;
     z-index: 99999;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
-#ttt{
+
+#ttt {
     color: white;
     font-size: 24px;
 }
 
-.snap-button {
+.toggler {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+    border-radius: 50%;
+    min-width: 55px;
+    min-height: 55px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 32px 32px;
+    margin: 0 30px;
+    background-color: rgba(0, 0, 0, 0.267);
+    cursor: pointer;
+    transition: background-color 180ms ease-in-out;
+}
+
+.toggle-active {
+    background-color: hsla(207, 96%, 55%, 0.89);
+}
+
+#move-button{
+    background-image: url("../img/move.png");
+}
+
+#rotate-button{
+    background-image: url("../img/360.png");
+}
+
+#snap-button {
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -36,6 +68,8 @@ button {
     -webkit-tap-highlight-color: transparent;
 
     background-image: url("../img/camera.svg");
+    margin: 0 30px;
+    border: none;
     background-size: 80px 80px;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,12 +78,10 @@ button {
     min-height: 70px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 8px 10px rgba(0, 0, 0, 0.24);
-    transition: box-shadow 80ms ease-in-out,
-                transform 80ms ease-in-out,
-                background-size 80ms ease-in;
+    transition: box-shadow 80ms ease-in-out, transform 80ms ease-in-out, background-size 80ms ease-in;
     cursor: pointer;
 }
-.snap-button:active {
+#snap-button:active {
     transform: rotate(45deg);
     background-size: 85px 85px;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.37);
