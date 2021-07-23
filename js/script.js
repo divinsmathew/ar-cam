@@ -6,21 +6,17 @@ window.onload = () =>
     let el = document.querySelector("body > a-scene > a-marker > a-entity")
 
     var myTapGesture = new ZingTouch.Distance();
-    var gest = new ZingTouch.Gesture();
     activeRegion.bind(containerElement, myTapGesture, function (event)
     {
-        let factor = event.detail.change / 100.0;
-
+        let factor = event.detail.change / 500.0;
         let scale = el.getAttribute('scale').x
         if ((scale > 5 && factor > 0 )|| (scale < 0.05 && factor < 0)) return;
         scale += factor;
-
         el.object3D.scale.set(scale, scale, scale);
-
-        ttt.innerText = scale;
-
     });
 }
+
+// ttt.innerText = scale;
 
 
 function X()
