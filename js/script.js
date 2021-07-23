@@ -12,7 +12,6 @@ window.onload = () =>
         let factor = event.detail.change / 1.0;
 
         let scale = el.getAttribute('rotation')
-        scale += factor;
 
         console.table(scale)
         el.object3D.scale.set(scale, scale, scale);
