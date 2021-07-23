@@ -20,8 +20,6 @@ button {
     z-index: 99999;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    isolation: isolate;
-
 }
 
 #ttt {
