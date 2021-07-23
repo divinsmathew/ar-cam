@@ -40,10 +40,10 @@ window.onload = () =>
             let direction = calculateDirection(event.detail.data[0].currentDirection);
     
             switch(direction){
-                case 'up': position.y += 0.1; break;
-                case 'left': position.x += 0.1; break;
-                case 'bottom': position.y -= 0.1; break;
-                case 'right': position.x -= 0.1; break;
+                case 'up': position.z += 0.01; break;
+                case 'left': position.x -= 0.01; break;
+                case 'down': position.z -= 0.01; break;
+                case 'right': position.x += 0.01; break;
             }
     
             entity.object3D.position.set(position.x, position.y, position.z);
