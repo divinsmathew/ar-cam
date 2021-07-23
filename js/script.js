@@ -25,22 +25,53 @@ window.onload = () =>
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
         entity.object3D.scale.set(scale, scale, scale)
-        ttt.innerText = factor ;
+        ttt.innerText = factor;
     });
 
-    var swipe = new ZingTouch.Swipe({
-        numInputs: 2,
-        maxRestTime: 100,
-        escapeVelocity: 0.25
-    });
+    let swipe = new ZingTouch.Pan({
+        numInputs: 1,
+        threshold: 5
+    })
     activeRegion.bind(containerElement, swipe, function (event)
     {
-        let factor = event.detail.currentDirection;
-        let position = entity.getAttribute('position');
-
-        ttt.innerText = factor ;
-
+        if(moveMode)
+        {
+            let position = entity.getAttribute('position');
+            let direction = calculateDirection(event.detail.data[0].currentDirection);
+    
+            switch(direction){
+                case 'up': position.y += 0.1; break;
+                case 'left': position.x += 0.1; break;
+                case 'bottom': position.y -= 0.1; break;
+                case 'right': position.x -= 0.1; break;
+            }
+    
+            entity.object3D.position.set(position.x, position.y, position.z);
+        }
     });
+}
+
+function calculateDirection(angle)
+{
+    /*
+              90  
+               |
+               |
+    180 --------------- 360
+               |
+               |
+              270
+
+    */
+
+    if (angle <= 135 && angle > 45)
+        return 'up'
+    else if (angle <= 225 && angle > 135)
+        return 'left'
+    else if (angle <= 315 && angle > 225)
+        return 'down'
+    else
+        return 'right'
 }
 
 function toggleMove()
