@@ -11,7 +11,7 @@ window.onload = () =>
     {
         let factor = event.detail.change / 1.0;
         
-        let scale = parseFloat(el.getAttribute('rotation'))
+        let scale = el.getAttribute('rotation')
         if(scale >5 || scale <-5) return;
         scale += factor;
 
