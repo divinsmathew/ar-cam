@@ -13,7 +13,7 @@ window.onload = () =>
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
 
-    var activeRegion = ZingTouch.Region(document.body);
+    var activeRegion = ZingTouch.Region(document.getElementsByClassName('render')[0]);
     var containerElement = document.getElementsByTagName('a-scene')[0];
     entity = document.querySelector("body > a-scene > a-marker > a-entity")
 
