@@ -7,6 +7,7 @@ window.onload = () =>
     activeRegion.bind(containerElement, myTapGesture, function(event){
 
         console.log('Custom Distance gesture emitted: ',JSON.stringify(event.distance));
+        console.log('Custom Distance gesture emitted: ',JSON.stringify(event.detail.distance));
 
 
     });
