@@ -12,8 +12,8 @@ window.onload = () =>
     var ttt = document.getElementById('ttt');
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
-
-    var activeRegion = ZingTouch.Region(document.body);
+    
+    var activeRegion = ZingTouch.Region(document.getElementsByTagName('a-marker')[0]);
     var containerElement = document.getElementsByTagName('a-scene')[0];
     entity = document.querySelector("body > a-scene > a-marker > a-entity")
 
@@ -25,6 +25,7 @@ window.onload = () =>
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
         entity.object3D.scale.set(scale, scale, scale);
+        ttt.innerText = factor;
     });
 
     var swipe = new ZingTouch.Swipe({
@@ -38,12 +39,12 @@ window.onload = () =>
         let position = entity.getAttribute('position');
 
         ttt.innerText = factor;
-
     });
 }
 
 function toggleMove()
 {
+    console.log('dd')
     if (moveMode)
         moveButton.classList.remove('toggle-active')
     else
