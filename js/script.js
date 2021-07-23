@@ -20,12 +20,6 @@ window.onload = () =>
         ttt.innerText = scale;
 
     });
-    activeRegion.bind(containerElement, gest, function (event)
-    {
-
-        ttt.innerText = event;
-
-    });
 }
 
 
