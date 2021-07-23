@@ -1,15 +1,37 @@
 
-  function up()
-  {
-    let tag = document.querySelector("body > a-scene > a-marker > a-entity")
-    let scale = tag.getAttribute('scale').x
-    scale += 0.05;
-    tag.object3D.scale.set(scale, scale, scale);
-  }
-  function down()
-  {
-    let tag = document.querySelector("body > a-scene > a-marker > a-entity")
-    let scale = tag.getAttribute('scale').x
-    scale -= 0.05;
-    tag.object3D.scale.set(scale, scale, scale);
-  }
+function X()
+{
+    let el = document.querySelector("body > a-scene > a-marker > a-entity")
+    let rotation = el.getAttribute('rotation')
+    rotation.x += 90;
+    el = document.querySelector("body > a-scene > a-marker > a-entity")
+    el.object3D.rotation.set(
+        THREE.Math.degToRad(rotation.x),
+        THREE.Math.degToRad(rotation.y),
+        THREE.Math.degToRad(rotation.z)
+    );
+}
+function Y()
+{
+    let el = document.querySelector("body > a-scene > a-marker > a-entity")
+    let rotation = el.getAttribute('rotation')
+    rotation.y += 90;
+    el = document.querySelector("body > a-scene > a-marker > a-entity")
+    el.object3D.rotation.set(
+        THREE.Math.degToRad(rotation.x),
+        THREE.Math.degToRad(rotation.y),
+        THREE.Math.degToRad(rotation.z)
+    );
+}
+function Z()
+{
+    let el = document.querySelector("body > a-scene > a-marker > a-entity")
+    let rotation = el.getAttribute('rotation')
+    rotation.z += 95;
+    el = document.querySelector("body > a-scene > a-marker > a-entity")
+    el.object3D.rotation.set(
+        THREE.Math.degToRad(rotation.x),
+        THREE.Math.degToRad(rotation.y),
+        THREE.Math.degToRad(rotation.z)
+    );
+}

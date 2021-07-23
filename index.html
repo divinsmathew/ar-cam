@@ -11,12 +11,13 @@
 
 <body style="margin : 0px; overflow: hidden;">
   <section class="controls">
-    <button onclick="up()">Up</button>
-    <button onclick="down()">Down</button>
+    <button onclick="X()">X</button>
+    <button onclick="Y()">Y</button>
+    <button onclick="Z()">Z</button>
   </section>
   <a-scene embedded arjs>
     <a-marker preset="hiro">
-      <a-entity position="0 0 0" rotation="180 90 0" scale="0.15 0.15 0.15" gltf-model="./Bee.glb"></a-entity>
+      <a-entity position="0 0 0" rotation="180 0 0" scale="0.15 0.15 0.15" gltf-model="./Bee.glb"></a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
