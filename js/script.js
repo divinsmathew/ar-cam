@@ -13,7 +13,7 @@ window.onload = () =>
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
 
-    var activeRegion = ZingTouch.Region(document.body, true);
+    var activeRegion = ZingTouch.Region(document.body, false, false);
     var containerElement = document.getElementsByTagName('a-scene')[0];
     entity = document.querySelector("body > a-scene > a-marker > a-entity")
 
@@ -27,9 +27,6 @@ window.onload = () =>
         entity.object3D.scale.set(scale, scale, scale)
         ttt.innerText = factor ;
     });
-    
-    console.log(document.querySelector('body > section').style)
-    console.log(moveButton)
     // var swipe = new ZingTouch.Swipe({
     //     numInputs: 2,
     //     maxRestTime: 100,
