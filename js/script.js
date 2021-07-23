@@ -1,6 +1,6 @@
 window.onload = () =>
 {
-    screen.lockOrientation("portrait-primary");
+    screen.lockOrientation("portrait");
 
     var square = document.getElementsByTagName('body')[0];
     var hammer = new Hammer(square);

@@ -24,6 +24,12 @@ button {
 }
 
 .snap-button {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
     background-image: url("../img/camera.svg");
     background-size: 80px 80px;
     background-repeat: no-repeat;
