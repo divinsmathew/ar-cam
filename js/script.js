@@ -2,13 +2,15 @@ window.onload = () =>
 {
     var activeRegion = ZingTouch.Region(document.body);
     var containerElement = document.getElementsByTagName('a-scene')[0];
+    var ttt = document.getElementById('ttt');
 
     var myTapGesture = new ZingTouch.Distance();
-    activeRegion.bind(containerElement, myTapGesture, function(event){
+    activeRegion.bind(containerElement, myTapGesture, function (event)
+    {
 
-        console.log('Custom Distance gesture emitted: ',JSON.stringify(event.distance));
-        console.log('Custom Distance gesture emitted: ',JSON.stringify(event.detail.distance));
-
+        console.log('Custom Distance gesture emitted: ', JSON.stringify(event.detail.change));
+        console.log('Custom Distance gesture emitted: ', JSON.stringify(event.detail.distance));
+        ttt.innerText = event.detail.change + ', ' + event.detail.distance;
 
     });
 }

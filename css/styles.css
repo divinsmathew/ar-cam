@@ -22,6 +22,10 @@ button {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+#ttt{
+    color: white;
+    font-size: 24px;
+}
 
 .snap-button {
     -webkit-user-select: none;
