@@ -11,9 +11,10 @@ window.onload = () =>
     {
         let factor = event.detail.change / 1.0;
 
-        let scale = el.getAttribute('rotation')
+        let scale = el.getAttribute('scale').x
+        if (scale > 5 || scale < -5) return;
+        scale += factor;
 
-        console.table(scale)
         el.object3D.scale.set(scale, scale, scale);
 
         ttt.innerText = scale;
