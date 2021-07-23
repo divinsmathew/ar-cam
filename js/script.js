@@ -15,6 +15,7 @@ window.onload = () =>
         if(scale >5 || scale <-5) return;
         scale += factor;
 
+        console.log("xx",scale)
         el.object3D.scale.set(scale,scale,scale);
 
         ttt.innerText = scale;
