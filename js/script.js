@@ -85,25 +85,25 @@ function calculateDirection(angle)
 
     */
 
-    //     if (angle <= 135 && angle > 45)
-    //     return 'up'
-    // else if (angle <= 225 && angle > 135)
-    //     return 'left'
-    // else if (angle <= 315 && angle > 225)
-    //     return 'down'
-    // else
-    //     return 'right'
-
-    if (angle === 90)
+        if (angle <= 135 && angle > 45)
         return 'up'
-    else if (angle === 180)
+    else if (angle <= 225 && angle > 135)
         return 'left'
-    else if (angle === 270)
+    else if (angle <= 315 && angle > 225)
         return 'down'
-    else if (angle === 360)
-        return 'right'
     else
-        return null
+        return 'right'
+
+    // if (angle === 90)
+    //     return 'up'
+    // else if (angle === 180)
+    //     return 'left'
+    // else if (angle === 270)
+    //     return 'down'
+    // else if (angle === 360)
+    //     return 'right'
+    // else
+    //     return null
 }
 
 function toggleMove()
