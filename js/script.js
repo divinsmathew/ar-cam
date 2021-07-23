@@ -1,17 +1,19 @@
 window.onload = () =>
 {
-    screen.lockOrientation("portrait");
+    var activeRegion = ZingTouch.Region(document.body);
+    var containerElement = document.getElementsByTagName('section')[0];
 
-    var square = document.getElementsByTagName('body')[0];
-    var hammer = new Hammer(square);
+    var myTapGesture = new ZingTouch.Tap({ maxDelay : 100 });
+    activeRegion.bind(containerElement, myTapGesture, function(event){
 
-    hammer.get('pinch').set({ enable: true, pointers:2, threshold: 5});
 
-    hammer.on('pinch', function(e) {
+        console.log('Custom Tap gesture emitted: ' + event);
+        alert('Custom Tap gesture emitted: ' + event);
 
-        alert(e)
-      console.log(e);
-    });
+
+    }, false);
+    console.log('Custom Tap gesture ' );
+
 
     var controls = document.getElementsByClassName('controls')[0];
     controls.addEventListener('click', (e)=>{
