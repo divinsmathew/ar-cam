@@ -6,18 +6,13 @@ window.onload = () =>
     var myTapGesture = new ZingTouch.Distance();
     activeRegion.bind(containerElement, myTapGesture, function(event){
 
+        console.log('Custom Distance gesture emitted: ',JSON.stringify(event));
 
-        console.log('Custom Tap gesture emitted: ',JSON.stringify(event));
 
-
-    }, false);
+    });
     console.log('Custom Tap gesture ' );
 
 
-    var controls = document.getElementsByClassName('controls')[0];
-    controls.addEventListener('click', (e)=>{
-        e.stopPropagation();
-    })
 }
 
 
