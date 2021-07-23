@@ -9,10 +9,10 @@ window.onload = () =>
     var gest = new ZingTouch.Gesture();
     activeRegion.bind(containerElement, myTapGesture, function (event)
     {
-        let factor = event.detail.change / 1.0;
+        let factor = event.detail.change / 10.0;
 
         let scale = el.getAttribute('scale').x
-        if (scale > 5 || scale < -5) return;
+        if ((scale > 5 && factor > 0 )|| (scale < -5 && factor < 0)) return;
         scale += factor;
 
         el.object3D.scale.set(scale, scale, scale);
