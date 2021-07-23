@@ -27,19 +27,20 @@ window.onload = () =>
         entity.object3D.scale.set(scale, scale, scale)
         ttt.innerText = factor ;
     });
-    // var swipe = new ZingTouch.Swipe({
-    //     numInputs: 2,
-    //     maxRestTime: 100,
-    //     escapeVelocity: 0.25
-    // });
-    // activeRegion.bind(containerElement, swipe, function (event)
-    // {
-    //     let factor = event.detail.currentDirection;
-    //     let position = entity.getAttribute('position');
 
-    //     ttt.innerText = factor ;
+    var swipe = new ZingTouch.Swipe({
+        numInputs: 2,
+        maxRestTime: 100,
+        escapeVelocity: 0.25
+    });
+    activeRegion.bind(containerElement, swipe, function (event)
+    {
+        let factor = event.detail.currentDirection;
+        let position = entity.getAttribute('position');
 
-    // });
+        ttt.innerText = factor ;
+
+    });
 }
 
 function toggleMove()
