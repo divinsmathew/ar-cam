@@ -3,15 +3,21 @@ window.onload = () =>
     var activeRegion = ZingTouch.Region(document.body);
     var containerElement = document.getElementsByTagName('a-scene')[0];
     var ttt = document.getElementById('ttt');
+    let el = document.querySelector("body > a-scene > a-marker > a-entity")
 
     var myTapGesture = new ZingTouch.Distance();
     var gest = new ZingTouch.Gesture();
     activeRegion.bind(containerElement, myTapGesture, function (event)
     {
+        let factor = event.detail.change / 1.0;
+        
+        let scale = parseFloat(el.getAttribute('rotation'))
+        if(scale >5 || scale <-5) return;
+        scale += factor;
 
-        console.log('Custom Distance gesture emitted: ', JSON.stringify(event.detail.change));
-        console.log('Custom Distance gesture emitted: ', JSON.stringify(event.detail.distance));
-        ttt.innerText = event.detail.change + ', ' + event.detail.distance;
+        el.object3D.scale.set(scale,scale,scale);
+
+        ttt.innerText = scale;
 
     });
     activeRegion.bind(containerElement, gest, function (event)
