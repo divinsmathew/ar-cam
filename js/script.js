@@ -5,12 +5,19 @@ window.onload = () =>
     var ttt = document.getElementById('ttt');
 
     var myTapGesture = new ZingTouch.Distance();
+    var gest = new ZingTouch.Gesture();
     activeRegion.bind(containerElement, myTapGesture, function (event)
     {
 
         console.log('Custom Distance gesture emitted: ', JSON.stringify(event.detail.change));
         console.log('Custom Distance gesture emitted: ', JSON.stringify(event.detail.distance));
         ttt.innerText = event.detail.change + ', ' + event.detail.distance;
+
+    });
+    activeRegion.bind(containerElement, gest, function (event)
+    {
+
+        ttt.innerText = event;
 
     });
 }
