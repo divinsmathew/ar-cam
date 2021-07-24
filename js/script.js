@@ -74,11 +74,11 @@ window.onload = () =>
                 // case 'left': rotation.x -= 1.5; rotation.y = 270; ; rotation.z = 90; break;
                 // case 'right': rotation.x += 1.5; rotation.y = 270; ; rotation.z = 90; break;
 
-                case 'up': rotation.z -= 1.5; break;
-                case 'down': rotation.z += 1.5; break;
+                case 'up': rotation.x -= 1.5; break;
+                case 'down': rotation.x += 1.5; break;
 
-                case 'left': rotation.x -= 1.5; break;
-                case 'right': rotation.x += 1.5; break;
+                case 'left': rotation.z -= 1.5; break;
+                case 'right': rotation.z += 1.5; break;
             }
             entity.object3D.rotation.set(
                 THREE.Math.degToRad(rotation.x),
