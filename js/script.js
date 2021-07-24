@@ -22,6 +22,12 @@ window.onload = () =>
     entity.addEventListener("model-loaded", (e) =>
     {
         console.log(entity)
+        let overlay = document.getElementById('overlay')
+        setTimeout(() =>
+        {
+            overlay.style.opacity = '0';
+            setTimeout(function () { overlay.parentNode.removeChild(overlay); }, 2000);
+        }, 2000)
     })
 
     var pinch = new ZingTouch.Distance();
