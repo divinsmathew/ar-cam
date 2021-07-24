@@ -115,11 +115,12 @@ button {
 .cssload-wrap::after{
     content: 'loading';
     position: relative;
-    top: 25px;
+    top: 40px;
     font-family: 'Lato';
     font-size: 20px;
     letter-spacing: 12px;
     color: #fff;
+    left: 5px;
 }
 
 

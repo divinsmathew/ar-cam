@@ -25,8 +25,8 @@ window.onload = () =>
         let overlay = document.getElementById('overlay')
         setTimeout(() =>
         {
-           // overlay.style.opacity = '0';
-           // setTimeout(() => { overlay.parentNode.removeChild(overlay); }, 500);
+            overlay.style.opacity = '0';
+            overlay.style.zIndex = '5';
         }, 2000)
     })
 
@@ -152,6 +152,14 @@ function toggleRotate()
     rotateMode = !rotateMode;
 }
 
+function getSnap()
+{
+    let canvas = document.querySelector('body > a-scene > canvas');
+    var link = document.getElementById('link');
+    link.setAttribute('download', 'MintyPaper.png');
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    link.click();
+}
 
 
 
