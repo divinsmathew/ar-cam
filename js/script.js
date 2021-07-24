@@ -73,6 +73,32 @@ window.onload = () =>
             );
         }
     });
+
+    let swipe2 = new ZingTouch.Pan({
+        numInputs: 2,
+        threshold: 5
+    })
+    activeRegion.bind(containerElement, swipe2, function (event)
+    {
+        if (moveMode)
+        {
+            let position = entity.getAttribute('position');
+            let direction = calculateDirection(event.detail.data[0].currentDirection);
+
+            if (!direction) return;
+
+            switch (direction)
+            {
+                case 'up': position.y -= 0.045; break;
+                case 'down': position.y += 0.045; break;
+            }
+
+            entity.object3D.position.set(position.x, position.y, position.z);
+        }
+        else if (rotateMode)
+        {
+        }
+    });
 }
 
 function calculateDirection(angle)
