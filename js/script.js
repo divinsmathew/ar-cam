@@ -52,9 +52,9 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.z -= 0.025; break;
+                case 'up': position.y -= 0.025; break;
                 case 'left': position.x -= 0.025; break;
-                case 'down': position.z += 0.025; break;
+                case 'down': position.y += 0.025; break;
                 case 'right': position.x += 0.025; break;
             }
 
