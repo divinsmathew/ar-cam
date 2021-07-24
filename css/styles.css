@@ -23,8 +23,15 @@ button {
 }
 
 #ttt {
-    color: white;
-    font-size: 24px;
+    top: 10px;
+    left: 50%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.541);
+    transform: translateX(-50%);
+    top: 0;
+    border: 0;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 88px;
 }
 
 .toggler {
