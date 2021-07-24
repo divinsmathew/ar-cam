@@ -45,10 +45,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.z -= 0.035; break;
-                case 'left': position.x -= 0.035; break;
-                case 'down': position.z += 0.035; break;
-                case 'right': position.x += 0.035; break;
+                case 'up': position.z -= 0.025; break;
+                case 'left': position.x -= 0.025; break;
+                case 'down': position.z += 0.025; break;
+                case 'right': position.x += 0.025; break;
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
@@ -73,32 +73,6 @@ window.onload = () =>
                 THREE.Math.degToRad(rotation.y),
                 THREE.Math.degToRad(rotation.z)
             );
-        }
-    });
-
-    let swipe2 = new ZingTouch.Pan({
-        numInputs: 2,
-        threshold: 5
-    })
-    activeRegion.bind(containerElement, swipe2, function (event)
-    {
-        if (moveMode)
-        {
-            let position = entity.getAttribute('position');
-            let direction = calculateDirection(event.detail.data[0].currentDirection);
-
-            if (!direction) return;
-
-            switch (direction)
-            {
-                case 'up': position.y -= 0.035; break;
-                case 'down': position.y += 0.035; break;
-            }
-
-            entity.object3D.position.set(position.x, position.y, position.z);
-        }
-        else if (rotateMode)
-        {
         }
     });
 }
