@@ -7,11 +7,11 @@ let rotateButton = undefined;
 
 let entity = undefined;
 
-var ttt;
+var log;
 
 window.onload = () =>
 {
-    ttt = document.getElementById('ttt');
+    log = document.getElementById('log');
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
 
@@ -29,7 +29,7 @@ window.onload = () =>
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
         entity.object3D.scale.set(scale, scale, scale)
-        ttt.innerText = factor;
+        log.innerText = factor;
     });
 
     let swipe = new ZingTouch.Pan({
@@ -77,8 +77,8 @@ window.onload = () =>
                 case 'up': rotation.x -= 1.5; break;
                 case 'down': rotation.x += 1.5; break;
 
-                case 'left': rotation.z -= 1.5; break;
-                case 'right': rotation.z += 1.5; break;
+                case 'left': rotation.z += 1.5; break;
+                case 'right': rotation.z -= 1.5; break;
             }
             entity.object3D.rotation.set(
                 THREE.Math.degToRad(rotation.x),
@@ -152,7 +152,7 @@ function toggleRotate()
 
     rotateMode = !rotateMode;
 }
-// ttt.innerText = scale;
+// log.innerText = scale;
 
 
 function X()
@@ -199,5 +199,5 @@ function P()
     let el = document.querySelector("body > a-scene > a-marker > a-entity")
     let rotation = el.getAttribute('rotation')
 
-    ttt.innerText = parseInt(rotation.x) + ', ' + parseInt(rotation.y) + ', ' + parseInt(rotation.z);
+    log.innerText = parseInt(rotation.x) + ', ' + parseInt(rotation.y) + ', ' + parseInt(rotation.z);
 }
