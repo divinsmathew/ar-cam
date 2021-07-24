@@ -65,7 +65,7 @@ window.onload = () =>
             // 180 0 0 up
             // 0 0 0 down
             // 0 270 90 left
-            // 180 270 90 right
+            // 180 270 90 right 
 
             switch (direction)
             {
