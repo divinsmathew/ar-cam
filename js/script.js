@@ -6,12 +6,12 @@ let rotateButton = undefined;
 
 let entity = undefined;
 
-var log;
+// var log;
 
 
 window.onload = () =>
 {
-    log = document.getElementById('log');
+    // log = document.getElementById('log');
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
 
@@ -34,7 +34,7 @@ window.onload = () =>
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
         entity.object3D.scale.set(scale, scale, scale)
-        log.innerText = factor;
+        // log.innerText = factor;
     });
 
     let swipe = new ZingTouch.Pan({
@@ -52,9 +52,9 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.y -= 0.025; break;
+                case 'up': position.y += 0.025; break;
                 case 'left': position.x -= 0.025; break;
-                case 'down': position.y += 0.025; break;
+                case 'down': position.y -= 0.025; break;
                 case 'right': position.x += 0.025; break;
             }
 
@@ -146,46 +146,47 @@ function toggleRotate()
     rotateMode = !rotateMode;
 }
 
-function X()
-{
-    let rotation = entity.getAttribute('rotation')
-    rotation.x += 90;
-    entity.object3D.rotation.set(
-        THREE.Math.degToRad(rotation.x),
-        THREE.Math.degToRad(rotation.y),
-        THREE.Math.degToRad(rotation.z)
-    );
 
-    P()
-}
-function Y()
-{
-    let rotation = entity.getAttribute('rotation')
-    rotation.y += 90;
-    entity.object3D.rotation.set(
-        THREE.Math.degToRad(rotation.x),
-        THREE.Math.degToRad(rotation.y),
-        THREE.Math.degToRad(rotation.z)
-    );
 
-    P()
-}
-function Z()
-{
-    let rotation = entity.getAttribute('rotation')
-    rotation.z += 90;
-    entity.object3D.rotation.set(
-        THREE.Math.degToRad(rotation.x),
-        THREE.Math.degToRad(rotation.y),
-        THREE.Math.degToRad(rotation.z)
-    );
 
-    P()
-}
-function P()
-{
-    let el = document.querySelector("body > a-scene > a-marker > a-entity")
-    let rotation = entity.getAttribute('rotation')
+// function X()
+// {
+//     let rotation = entity.getAttribute('rotation')
+//     rotation.x += 90;
+//     entity.object3D.rotation.set(
+//         THREE.Math.degToRad(rotation.x),
+//         THREE.Math.degToRad(rotation.y),
+//         THREE.Math.degToRad(rotation.z)
+//     );
 
-    log.innerText = parseInt(rotation.x) + ', ' + parseInt(rotation.y) + ', ' + parseInt(rotation.z);
-}
+//     P()
+// }
+// function Y()
+// {
+//     let rotation = entity.getAttribute('rotation')
+//     rotation.y += 90;
+//     entity.object3D.rotation.set(
+//         THREE.Math.degToRad(rotation.x),
+//         THREE.Math.degToRad(rotation.y),
+//         THREE.Math.degToRad(rotation.z)
+//     );
+
+//     P()
+// }
+// function Z()
+// {
+//     let rotation = entity.getAttribute('rotation')
+//     rotation.z += 90;
+//     entity.object3D.rotation.set(
+//         THREE.Math.degToRad(rotation.x),
+//         THREE.Math.degToRad(rotation.y),
+//         THREE.Math.degToRad(rotation.z)
+//     );
+
+//     P()
+// }
+// function P()
+// {
+//     let rotation = entity.getAttribute('rotation')
+//     log.innerText = parseInt(rotation.x) + ', ' + parseInt(rotation.y) + ', ' + parseInt(rotation.z);
+// }
