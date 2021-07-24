@@ -19,14 +19,14 @@ window.onload = () =>
     var containerElement = document.getElementsByTagName('a-scene')[0];
     entity = document.getElementById("theModel")
 
-    entity.addEventListener("model-loaded", (e) =>
+    entity.addEventListener("model-loaded", () =>
     {
         console.log(entity)
         let overlay = document.getElementById('overlay')
         setTimeout(() =>
         {
             overlay.style.opacity = '0';
-            setTimeout(function () { overlay.parentNode.removeChild(overlay); }, 2000);
+            setTimeout(() => { overlay.parentNode.removeChild(overlay); }, 500);
         }, 2000)
     })
 
