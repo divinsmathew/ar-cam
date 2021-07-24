@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<script src="./js/three.min.js"></script>
 <script src="./js/aframe.min.js"></script>
 <script src="./js/aframe-ar.js"></script>
 <script src="./js/zingtouch.min.js"></script>
@@ -11,17 +10,20 @@
 <body style="margin : 0px; overflow: hidden;">
   <div id="log"></div>
   <section class="controls">
-    <button onclick="X()">X</button>
+    <!-- <button onclick="X()">X</button>
     <button onclick="Y()">Y</button>
     <button onclick="Z()">Z</button>
-    <button onclick="P()">P</button>
+    <button onclick="P()">P</button> -->
     <button id="move-button" class="toggler" onclick="toggleMove()"></button>
     <button id="snap-button" onclick="getSnap()"></button>
     <button id="rotate-button" class="toggler" onclick="toggleRotate()"></button>
   </section>
   <a-scene embedded arjs vr-mode-ui="enabled: false">
     <a-marker preset="hiro">
-      <a-entity position="0 0 0" rotation="270 0 0" scale="0.1 0.1 0.1" gltf-model="./Bee.glb"></a-entity>
+      <a-entity position="0 0 0" rotation="270 0 0">
+        <a-entity id='theModel' position="0 0 0" rotation="0 0 0" scale="0.1 0.1 0.1" gltf-model="./Bee.glb">
+        </a-entity>
+      </a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
