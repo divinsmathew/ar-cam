@@ -20,6 +20,8 @@ window.onload = () =>
     var pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
     {
+        if(rotateMode || moveMode) return;
+
         let factor = event.detail.change / 500.0;
         let scale = entity.getAttribute('scale').x;
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
@@ -43,10 +45,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.z -= 0.045; break;
-                case 'left': position.x -= 0.045; break;
-                case 'down': position.z += 0.045; break;
-                case 'right': position.x += 0.045; break;
+                case 'up': position.z -= 0.035; break;
+                case 'left': position.x -= 0.035; break;
+                case 'down': position.z += 0.035; break;
+                case 'right': position.x += 0.035; break;
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
@@ -89,8 +91,8 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.y -= 0.045; break;
-                case 'down': position.y += 0.045; break;
+                case 'up': position.y -= 0.035; break;
+                case 'down': position.y += 0.035; break;
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
