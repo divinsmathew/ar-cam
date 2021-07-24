@@ -24,14 +24,14 @@
     <button id="snap-button" onclick="getSnap()"></button>
     <button id="rotate-button" class="toggler" onclick="toggleRotate()"></button>
   </section>
-  <a-scene embedded arjs vr-mode-ui="enabled: false">
+  <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false">
     <a-marker preset="hiro">
       <a-entity position="0 0 0" rotation="270 0 0">
         <a-entity id='theModel' position="0 0 0" rotation="0 0 0" scale="0.1 0.1 0.1" gltf-model="./Bee.glb">
         </a-entity>
       </a-entity>
     </a-marker>
-    <a-entity camera></a-entity>
+    <a-entity id="camera" camera></a-entity>
   </a-scene>
 </body>
 
