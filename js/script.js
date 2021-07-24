@@ -25,8 +25,8 @@ window.onload = () =>
         let overlay = document.getElementById('overlay')
         setTimeout(() =>
         {
-            overlay.style.opacity = '0';
-            setTimeout(() => { overlay.parentNode.removeChild(overlay); }, 500);
+           // overlay.style.opacity = '0';
+           // setTimeout(() => { overlay.parentNode.removeChild(overlay); }, 500);
         }, 2000)
     })
 

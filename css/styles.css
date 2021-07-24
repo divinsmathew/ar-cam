@@ -99,19 +99,19 @@ button {
     transition: opacity 500ms linear;
 }
 
-
 .cssload-wrap {
-    width: 150px;
 	display: flex;
-    flex-direction: column;
 	box-pack: center;
 	justify-content: center;
+    flex-direction: column;
 	box-align: center;
 	align-items: center;
-	perspective: 240px;
+	perspective: 210px;
 	height: 100%;
 	overflow: hidden;
+    width: 150px;
 }
+
 .cssload-wrap::after{
     content: 'loading';
     position: relative;
@@ -122,28 +122,30 @@ button {
     color: #fff;
 }
 
+
 .cssload-cssload-spinner {
 	position: relative;
 	transform-style: preserve-3d;
-	animation: cssload-wobble 2.3895s ease-in-out infinite;
+	animation: cssload-wobble 3.3895s ease-in-out infinite;
 }
 .cssload-cssload-spinner:before, .cssload-cssload-spinner:after {
 	display: block;
 	content: "";
-	width: 54px;
-	height: 54px;
-	border: 27px solid;
+	width: 47px;
+	height: 47px;
+	border: 24px solid;
 	border-radius: 50%;
-	animation: cssload-spin 0.895s ease-in-out infinite both reverse;
+	animation: cssload-spin 1.275s ease-in-out infinite both reverse;
 }
 .cssload-cssload-spinner:before {
-	border-color: rgba(51,167,255);
+	border-color: rgb(51,167,255);
 	position: absolute;
 }
 .cssload-cssload-spinner:after {
 	border-color: #fff;
-	animation-delay: -0.4475s;
+	animation-delay: -0.6375s;
 }
+
 
 @keyframes cssload-wobble {
 	0%, 100% {
@@ -156,12 +158,12 @@ button {
 
 @keyframes cssload-spin {
 	0%, 100% {
-		transform: translateZ(30px) rotateX(14deg);
+		transform: translateZ(26px) rotateX(14deg);
 	}
 	33% {
-		transform: translateZ(-30px) scale(0.4);
+		transform: translateZ(-26px) scale(0.4);
 	}
 	66% {
-		transform: translateZ(-30px);
+		transform: translateZ(-26px);
 	}
 }
