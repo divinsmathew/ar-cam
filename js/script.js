@@ -77,7 +77,7 @@ window.onload = () =>
 
     window.addEventListener("orientationchange", handleOrientation)
     window.addEventListener("fullscreenchange", handleFullScreen, false)
-    window.addEventListener('resize', handleWindowHeight);
+    //window.addEventListener('resize', handleWindowHeight);
     // const resizeObserver = new ResizeObserver(handleWindowHeight)
     // resizeObserver.observe(document.body)
 
