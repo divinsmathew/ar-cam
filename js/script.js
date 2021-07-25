@@ -45,11 +45,10 @@ function handleFullScreen()
 
 function handleWindowHeight(e)
 {
-    alert('changed')
     let overlays = document.getElementsByClassName('overlay');
     for (let i = 0; i < overlays.length; i++)
     {
-        overlays[i].style.height = window.clientHeight + 'px'
+        overlays[i].style.height = window.screen.height + 'px'
     }
 }
 
@@ -78,9 +77,9 @@ window.onload = () =>
 
     window.addEventListener("orientationchange", handleOrientation)
     window.addEventListener("fullscreenchange", handleFullScreen, false)
-    // window.addEventListener('resize', handleWindowHeight);
-    const resizeObserver = new ResizeObserver(handleWindowHeight)
-    resizeObserver.observe(document.body)
+    window.addEventListener('resize', handleWindowHeight);
+    // const resizeObserver = new ResizeObserver(handleWindowHeight)
+    // resizeObserver.observe(document.body)
 
     var pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
