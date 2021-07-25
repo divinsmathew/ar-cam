@@ -94,7 +94,6 @@ button {
     position: absolute;
     left: 0;
     bottom: 0;
-    z-index: 20;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,14 +101,18 @@ button {
 }
 
 #rotate-overlay{
-    opacity: 0;
+    z-index: 100;
 }
 #rotate-overlay .lato{
     position: absolute;
     transform: translateY(180px);
 }
+#loading-overlay{
+    z-index: 80;
+}
 
 #fullscreen-overlay{
+    z-index: 90;
     flex-direction: column;
     line-height: 3;
     position: absolute;

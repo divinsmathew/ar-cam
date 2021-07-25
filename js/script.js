@@ -19,16 +19,17 @@ function handleOrientation()
     else
     {
         rotateOverlay.style.opacity = '1';
-        rotateOverlay.style.zIndex = '20';
+        rotateOverlay.style.zIndex = '100';
     }
 }
 
-function handleFullScreen() {
+function handleFullScreen()
+{
     let fullscreenOverlay = document.getElementById('fullscreen-overlay')
     var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-    (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-    (document.msFullscreenElement && document.msFullscreenElement !== null);
+        (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+        (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+        (document.msFullscreenElement && document.msFullscreenElement !== null);
 
     if (isInFullScreen)
     {
@@ -38,7 +39,16 @@ function handleFullScreen() {
     else
     {
         fullscreenOverlay.style.opacity = '1';
-        fullscreenOverlay.style.zIndex = '20';
+        fullscreenOverlay.style.zIndex = '90';
+    }
+}
+
+function handleWindowHeight(e)
+{
+    let overlays = document.getElementsByClassName('overlay');
+    for (let i = 0; i < overlays.length; i++)
+    {
+        overlays[i].style.height = window.innerHeight + 'px'
     }
 }
 
@@ -67,6 +77,9 @@ window.onload = () =>
 
     window.addEventListener("orientationchange", handleOrientation)
     window.addEventListener("fullscreenchange", handleFullScreen, false)
+    // window.addEventListener('resize', handleWindowHeight);
+    const resizeObserver = new ResizeObserver(handleWindowHeight)
+    resizeObserver.observe(document.body)
 
     var pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
