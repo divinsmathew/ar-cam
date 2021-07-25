@@ -45,10 +45,11 @@ function handleFullScreen()
 
 function handleWindowHeight(e)
 {
+    alert('changed')
     let overlays = document.getElementsByClassName('overlay');
     for (let i = 0; i < overlays.length; i++)
     {
-        overlays[i].style.height = window.innerHeight + 'px'
+        overlays[i].style.height = window.clientHeight + 'px'
     }
 }
 
