@@ -37,7 +37,6 @@ window.onload = () =>
         rotateOverlay.style.height = newHeight;
     }, true);
 
-
     let activeRegion = ZingTouch.Region(document.body, false, false);
     let containerElement = document.getElementsByTagName('a-scene')[0];
     let pinch = new ZingTouch.Distance();
