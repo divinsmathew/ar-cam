@@ -196,13 +196,13 @@ function resizeCanvas(modelCanvas, videoWidth, videoHeight)
     } else
     {
         // Portrait
-        var scale = videoHeight / videoWidth;
-        var scaledHeight = modelCanvas.height * scale;
-        var scaledWidth = modelCanvas.width * scale;
-        var marginLeft = (modelCanvas.width - scaledWidth) / 2;
-        resizedContext.drawImage(modelCanvas, marginLeft, 0, scaledWidth, scaledHeight);
+        // var scale = videoHeight / videoWidth;
+        // var scaledHeight = modelCanvas.height * scale;
+        // var scaledWidth = modelCanvas.width * scale;
+        // var marginLeft = (modelCanvas.width - scaledWidth) / 2;
+        // resizedContext.drawImage(modelCanvas, marginLeft, 0, scaledWidth, scaledHeight);
 
-       // resizedContext.drawImage(modelCanvas, 0, 0, videoHeight, videoWidth);
+        resizedContext.drawImage(modelCanvas, 0, 0, videoHeight, videoWidth);
     }
 
     return resizedCanvas.toDataURL();
