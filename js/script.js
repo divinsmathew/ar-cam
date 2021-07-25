@@ -43,6 +43,14 @@ window.onload = () =>
         // log.innerText = factor;
     });
 
+    window.addEventListener("orientationchange", function() {
+        alert("the orientation of the device is now " + screen.orientation.angle);
+    });
+
+
+
+
+
     let swipe = new ZingTouch.Pan({
         numInputs: 1,
         threshold: 5
