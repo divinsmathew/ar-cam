@@ -181,30 +181,32 @@ const getSnap = async () =>
     });
 }
 
-function resizeCanvas(origCanvas, width, height)
+function resizeCanvas(modelCanvas, videoWidth, videoHeight)
 {
     let resizedCanvas = document.createElement("canvas");
     let resizedContext = resizedCanvas.getContext("2d");
 
-    resizedCanvas.height = height;
-    resizedCanvas.width = width;
+    // 3d <- video
+    resizedCanvas.width = videoWidth;
+    resizedCanvas.height = videoHeight;
 
-    console.log('orig: ', width, ',', height)
+    console.log('video: ', videoWidth, ',', videoHeight)
+    console.log('model: ', modelCanvas.width, ',', modelCanvas.height)
 
-    if (width > height) {
+    if (videoWidth > videoHeight) {
         // Landscape
-        resizedContext.drawImage(origCanvas, 0, 0, width, height);
+        resizedContext.drawImage(modelCanvas, 0, 0, videoWidth, videoHeight);
     } else {
         // Portrait
-        var scale = height / width;
-        var scaledHeight = origCanvas.width * scale;
-        var scaledWidth = origCanvas.height * scale;
-        var marginLeft = ( origCanvas.width - scaledWidth) / 2;
+        var scale = videoHeight / videoWidth;
+        var scaledHeight = modelCanvas.width * scale;
+        var scaledWidth = modelCanvas.height * scale;
+        var marginLeft = ( modelCanvas.width - scaledWidth) / 2;
 
         console.log('scaled: ', scaledWidth, ',', scaledHeight)
 
 
-        resizedContext.drawImage(origCanvas, 0, 0, scaledHeight, scaledWidth);
+        resizedContext.drawImage(modelCanvas, 0, 0, scaledHeight, scaledWidth);
     }
 
     return resizedCanvas.toDataURL();
