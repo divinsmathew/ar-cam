@@ -108,10 +108,10 @@ button {
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.37);
 }
 
-#overlay {
+.overlay {
     height: 100vh;
     width: 100vw;
-    background-color: #000000d8;
+    background-color: #2c2c2c;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -121,6 +121,132 @@ button {
     align-items: center;
     transition: opacity 500ms linear;
 }
+
+
+
+
+
+
+
+
+
+:root{
+    --phone-color: #2a2a2a;
+    --phone-height: 170px;
+    --phone-width: 90px;
+  }
+
+.arrow-wrap {
+    opacity: 0;
+    animation: up-down 800ms ease-in-out forwards infinite 1s,
+               alpha 800ms ease-in-out forwards 1s;
+    transform: translate(38px, -75px);
+  }
+  
+  .arrow-circle{
+    overflow: hidden;
+    position: absolute;
+    height: 40px;
+    width: 80px;
+  }
+  .arrow-circle .arrow{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 3px #c3c3c3 solid;
+    transform: translateX(-50px);
+  }
+  .arrow-wrap .arrow-head{
+    border-right: 3px #c3c3c3 solid;
+    border-bottom: 3px #c3c3c3 solid;
+    content: '';
+    display: block;
+    position: relative;
+    transform: translate(42px, 23px) rotate(34deg);
+    bottom: 0;
+    height: 15px;
+    width: 15px;
+  }
+  
+  .phone {
+    position: absolute;
+    height: var(--phone-height);
+    width: var(--phone-width);
+    background-color: var(--phone-color);
+    border: 2px #ffffff solid;
+    border-radius: 15px;
+  }
+  .phone::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    height: 10px;
+    width: 10px;
+    position: relative;
+    top: calc(100% - 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+  }
+  
+  .screen{
+    position: absolute;
+    height: calc(var(--phone-height) - 36px);
+    width: calc(var(--phone-width) - 12px);
+    border: 1px #c3c3c3 solid;
+    border-radius: 10px;
+    top:5px;
+    left:5px;
+  }
+  .shadow .screen {
+    border: 1px #555555 solid;
+  }
+  
+  .shadow {
+    border: 2px #555555 solid;
+    animation: translateYBack 1s ease-in-out forwards;
+    transform-origin: 50% 90%;
+  }
+  .shadow::after {
+    background-color: #555555;
+  }
+  
+  .rotate90 {
+    animation: rotate90 1s ease-in-out forwards;
+    transform-origin: 65% 85%;
+  }
+  
+  @keyframes translateYBack {
+    100%{
+      transform: translate(-65px);
+    }
+  }
+  
+  @keyframes up-down {
+    50% {
+      transform: translate(38px, -62px);
+    }
+  }
+  
+  @keyframes alpha {
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rotate90 {
+    100%{
+      transform: rotate(90deg) translateY(40px);
+    }
+  }
+
+
+
+
+
+
+
 
 
 

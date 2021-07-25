@@ -21,34 +21,33 @@ window.onload = () =>
 
     entity.addEventListener("model-loaded", () =>
     {
-        let overlay = document.getElementById('overlay')
+        let loadingOverlay = document.getElementById('loading-overlay')
         setTimeout(() =>
         {
-            if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
+            loadingOverlay.style.opacity = '0';
+            loadingOverlay.style.zIndex = '5';
+
+            if (screen.orientation.angle != 90 && this.screen.orientation.angle != 270)
             {
-                overlay.style.opacity = '0';
-                overlay.style.zIndex = '5';
-            }
-            else
-            {
-                overlay.style.opacity = '1';
-                overlay.style.zIndex = '20';
+                let rotateOverlay = document.getElementById('rotate-overlay')
+                rotateOverlay.style.opacity = '1';
+                rotateOverlay.style.zIndex = '20';
             }
         }, 500)
     })
 
     window.addEventListener("orientationchange", function ()
     {
-        let overlay = document.getElementById('overlay')
+        let rotateOverlay = document.getElementById('rotate-overlay')
         if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
         {
-            overlay.style.opacity = '0';
-            overlay.style.zIndex = '5';
+            rotateOverlay.style.opacity = '0';
+            rotateOverlay.style.zIndex = '5';
         }
         else
         {
-            overlay.style.opacity = '1';
-            overlay.style.zIndex = '20';
+            rotateOverlay.style.opacity = '1';
+            rotateOverlay.style.zIndex = '20';
         }
     });
 
