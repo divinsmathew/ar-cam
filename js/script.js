@@ -193,7 +193,12 @@ function resizeCanvas(origCanvas, width, height)
         // Landscape
         resizedContext.drawImage(origCanvas, 0, 0, width, height);
     } else {
-        resizedContext.drawImage(origCanvas, 0, 0, height, width);
+        // Portrait
+        var scale = height / width;
+        var scaledHeight = origCanvas.width * scale;
+        var scaledWidth = origCanvas.height * scale;
+        var marginLeft = ( origCanvas.width - scaledWidth) / 2;
+        resizedContext.drawImage(origCanvas, 0, 0, scaledWidth, scaledHeight);
     }
 
     return resizedCanvas.toDataURL();
