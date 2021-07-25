@@ -81,6 +81,7 @@ button {
   transition: box-shadow 80ms ease-in-out, transform 80ms ease-in-out, background-size 80ms ease-in;
   cursor: pointer;
 }
+
 #snap-button:active {
   transform: rotate(45deg);
   background-size: 85px 85px;
@@ -110,6 +111,7 @@ button {
 }
 #loading-overlay {
   z-index: 80;
+  background-color: #2c2c2c8e;
 }
 
 #fullscreen-overlay {
