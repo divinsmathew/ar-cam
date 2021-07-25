@@ -4,6 +4,10 @@ let rotateMode = false;
 let moveButton = undefined;
 let rotateButton = undefined;
 
+let loadingOverlay = undefined;
+let fullscreenOverlay = undefined;
+let rotateOverlay = undefined;
+
 let entity = undefined;
 
 // var log;
@@ -22,11 +26,6 @@ function makeOverlay(type, operation)
         overlay.style.opacity = '1';
         overlay.style.zIndex = zIndex;
     }
-
-    let loadingOverlay = document.getElementById('loading-overlay')
-    let fullscreenOverlay = document.getElementById('fullscreen-overlay')
-    let rotateOverlay = document.getElementById('rotate-overlay')
-
 
     switch (type)
     {
@@ -75,38 +74,35 @@ function handleFullScreen()
         makeOverlay('fullscreen', 'show')
 }
 
-function handleWindowHeight(e)
-{
-    let overlays = document.getElementsByClassName('overlay');
-    for (let i = 0; i < overlays.length; i++)
-        overlays[i].style.height = window.screen.height + 'px'
-}
-
 window.onload = () =>
 {
-    handleOrientation()
-    handleFullScreen()
-
     // log = document.getElementById('log');
+    entity = document.getElementById("theModel")
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
 
-    var activeRegion = ZingTouch.Region(document.body, false, false);
-    var containerElement = document.getElementsByTagName('a-scene')[0];
-    entity = document.getElementById("theModel")
+    loadingOverlay = document.getElementById('loading-overlay')
+    fullscreenOverlay = document.getElementById('fullscreen-overlay')
+    rotateOverlay = document.getElementById('rotate-overlay')
 
-    entity.addEventListener("model-loaded", () =>
-    {
-        setTimeout(() => { makeOverlay('loading', 'hide') }, 500)
-    })
+    handleOrientation()
+    handleFullScreen()
 
+    entity.addEventListener("model-loaded", () => { makeOverlay('loading', 'hide') })
     window.addEventListener("orientationchange", handleOrientation)
     window.addEventListener("fullscreenchange", handleFullScreen, false)
-    //window.addEventListener('resize', handleWindowHeight);
-    // const resizeObserver = new ResizeObserver(handleWindowHeight)
-    // resizeObserver.observe(document.body)
+    window.addEventListener('resize', () =>
+    {
+        let newHeight = window.innerHeight + 'px';
+        loadingOverlay.style.height = newHeight;
+        fullscreenOverlay.style.height = newHeight;
+        rotateOverlay.style.height = newHeight;
+    }, true);
 
-    var pinch = new ZingTouch.Distance();
+
+    let activeRegion = ZingTouch.Region(document.body, false, false);
+    let containerElement = document.getElementsByTagName('a-scene')[0];
+    let pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
     {
         if (rotateMode || moveMode) return;
