@@ -197,10 +197,10 @@ function resizeCanvas(modelCanvas, videoWidth, videoHeight)
     {
         // Portrait
         var scale = videoHeight / videoWidth;
-        var scaledHeight = origCanvas.height * scale;
-        var scaledWidth = origCanvas.width * scale;
-        var marginLeft = (origCanvas.width - scaledWidth) / 2;
-        resizedContext.drawImage(origCanvas, marginLeft, 0, scaledWidth, scaledHeight);
+        var scaledHeight = modelCanvas.height * scale;
+        var scaledWidth = modelCanvas.width * scale;
+        var marginLeft = (modelCanvas.width - scaledWidth) / 2;
+        resizedContext.drawImage(modelCanvas, marginLeft, 0, scaledWidth, scaledHeight);
 
        // resizedContext.drawImage(modelCanvas, 0, 0, videoHeight, videoWidth);
     }
