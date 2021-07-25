@@ -186,27 +186,23 @@ function resizeCanvas(modelCanvas, videoWidth, videoHeight)
     let resizedCanvas = document.createElement("canvas");
     let resizedContext = resizedCanvas.getContext("2d");
 
-    // 3d <- video
     resizedCanvas.width = videoWidth;
     resizedCanvas.height = videoHeight;
 
-    console.log('video: ', videoWidth, ',', videoHeight)
-    console.log('model: ', modelCanvas.width, ',', modelCanvas.height)
-
-    if (videoWidth > videoHeight) {
+    if (videoWidth > videoHeight)
+    {
         // Landscape
         resizedContext.drawImage(modelCanvas, 0, 0, videoWidth, videoHeight);
-    } else {
+    } else
+    {
         // Portrait
-        var scale = videoHeight / videoWidth;
-        var scaledHeight = modelCanvas.width * scale;
-        var scaledWidth = modelCanvas.height * scale;
-        var marginLeft = ( modelCanvas.width - scaledWidth) / 2;
+        var scale = height / width;
+        var scaledHeight = origCanvas.height * scale;
+        var scaledWidth = origCanvas.width * scale;
+        var marginLeft = (origCanvas.width - scaledWidth) / 2;
+        resizedContext.drawImage(origCanvas, marginLeft, 0, scaledWidth, scaledHeight);
 
-        resizedContext.drawImage(modelCanvas, 0, 0, videoHeight, videoWidth);
-
-
-        console.log('scaled: ', scaledWidth, ',', scaledHeight)
+       // resizedContext.drawImage(modelCanvas, 0, 0, videoHeight, videoWidth);
 
     }
 
@@ -219,35 +215,22 @@ function captureVideoFrame(video, format)
 
     var canvas = document.createElement("CANVAS");
 
-    canvas.width = screen.width;
-    canvas.height = screen.height;
-    const imageWidth = video.videoHeight * (screen.width / screen.height);
-    canvas.getContext('2d').drawImage(
-      video,
-      (video.videoWidth - imageWidth) / 2,
-      0,
-      imageWidth,
-      video.videoHeight,
-      0,
-      0,
-      screen.width,
-      screen.height,
-    );
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
     var dataUri = canvas.toDataURL('image/' + format);
     var data = dataUri.split(',')[1];
     var mimeType = dataUri.split(';')[0].slice(5)
-  
+
     var bytes = window.atob(data);
     var buf = new ArrayBuffer(bytes.length);
     var arr = new Uint8Array(buf);
-  
-    for (var i = 0; i < bytes.length; i++) {
-      arr[i] = bytes.charCodeAt(i);
-    }
-  
-    var blob = new Blob([ arr ], { type: mimeType });
-    canvas.remove();
-    return { blob: blob, dataUri: dataUri, format: format, width: screen.width, height: screen.height };
+
+    for (var i = 0; i < bytes.length; i++)
+        arr[i] = bytes.charCodeAt(i);
+
+    var blob = new Blob([arr], { type: mimeType });
+    return { blob: blob, dataUri: dataUri, format: format, width: canvas.width, height: canvas.height };
 };
 
 const defaultOptions = {
