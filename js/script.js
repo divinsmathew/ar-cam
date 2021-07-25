@@ -24,8 +24,15 @@ window.onload = () =>
         let overlay = document.getElementById('overlay')
         setTimeout(() =>
         {
-            overlay.style.opacity = '0';
-            overlay.style.zIndex = '5';
+            if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
+            {
+                overlay.style.opacity = '0';
+                overlay.style.zIndex = '5';
+            } else
+            {
+                overlay.style.opacity = '1';
+                overlay.style.zIndex = '20';
+            }
         }, 500)
 
     })
@@ -33,13 +40,15 @@ window.onload = () =>
     window.addEventListener("orientationchange", function ()
     {
         let overlay = document.getElementById('overlay')
-        if (screen.orientation.angle != 90 || this.screen.orientation.angle != 270)
+        if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
+        {
+            overlay.style.opacity = '0';
+            overlay.style.zIndex = '5';
+        } else
         {
             overlay.style.opacity = '1';
             overlay.style.zIndex = '20';
         }
-        overlay.style.opacity = '0';
-        overlay.style.zIndex = '5';
 
 
     });
