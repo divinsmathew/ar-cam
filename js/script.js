@@ -189,6 +189,8 @@ function resizeCanvas(origCanvas, width, height)
     resizedCanvas.height = height;
     resizedCanvas.width = width;
 
+    console.log('orig: ', width, ',', height)
+
     if (width > height) {
         // Landscape
         resizedContext.drawImage(origCanvas, 0, 0, width, height);
@@ -198,6 +200,10 @@ function resizeCanvas(origCanvas, width, height)
         var scaledHeight = origCanvas.width * scale;
         var scaledWidth = origCanvas.height * scale;
         var marginLeft = ( origCanvas.width - scaledWidth) / 2;
+
+        console.log('scaled: ', scaledWidth, ',', scaledHeight)
+
+
         resizedContext.drawImage(origCanvas, 0, 0, scaledHeight, scaledWidth);
     }
 
