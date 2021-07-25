@@ -28,13 +28,15 @@ window.onload = () =>
             {
                 overlay.style.opacity = '0';
                 overlay.style.zIndex = '5';
-            } else
+            }
+            else
             {
                 overlay.style.opacity = '1';
                 overlay.style.zIndex = '20';
             }
         }, 500)
 
+        requestFullScreen()
     })
 
     window.addEventListener("orientationchange", function ()
@@ -44,13 +46,12 @@ window.onload = () =>
         {
             overlay.style.opacity = '0';
             overlay.style.zIndex = '5';
-        } else
+        }
+        else
         {
             overlay.style.opacity = '1';
             overlay.style.zIndex = '20';
         }
-
-
     });
 
     var pinch = new ZingTouch.Distance();
@@ -111,6 +112,25 @@ window.onload = () =>
             );
         }
     });
+}
+
+function requestFullScreen()
+{
+    let element = document.body;
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod)
+    { // Native full screen.
+        requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined")
+    { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null)
+        {
+            wscript.SendKeys("{F11}");
+        }
+    }
 }
 
 function calculateDirection(angle)
