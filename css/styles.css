@@ -113,9 +113,8 @@ button {
 
 #fullscreen-overlay{
     z-index: 90;
-    flex-direction: column;
     line-height: 3;
-    position: absolute;
+    flex-direction: column;
 }
 
 #fullscreen-button{

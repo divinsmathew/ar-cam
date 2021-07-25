@@ -8,48 +8,78 @@ let entity = undefined;
 
 // var log;
 
+function makeOverlay(type, operation)
+{
+    function hideOverlay(overlay)
+    {
+        overlay.style.opacity = '0';
+        overlay.style.zIndex = '5';
+        setTimeout(() => { overlay.style.display = 'none'; }, 800);
+    }
+    function showOverlay(overlay, zIndex)
+    {
+        overlay.style.display = 'flex';
+        overlay.style.opacity = '1';
+        overlay.style.zIndex = zIndex;
+    }
+
+    let loadingOverlay = document.getElementById('loading-overlay')
+    let fullscreenOverlay = document.getElementById('fullscreen-overlay')
+    let rotateOverlay = document.getElementById('rotate-overlay')
+
+
+    switch (type)
+    {
+        case 'loading':
+            if (operation === 'show')
+                showOverlay(loadingOverlay, '80')
+            else if (operation === 'hide')
+                hideOverlay(loadingOverlay)
+
+            break;
+
+        case 'fullscreen':
+            if (operation === 'show')
+                showOverlay(fullscreenOverlay, '90')
+            else if (operation === 'hide')
+                hideOverlay(fullscreenOverlay)
+            break;
+
+        case 'rotate':
+            if (operation === 'show')
+                showOverlay(rotateOverlay, '100')
+            else if (operation === 'hide')
+                hideOverlay(rotateOverlay)
+            break;
+    }
+}
+
 function handleOrientation()
 {
-    let rotateOverlay = document.getElementById('rotate-overlay')
     if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
-    {
-        rotateOverlay.style.opacity = '0';
-        rotateOverlay.style.zIndex = '5';
-    }
+        makeOverlay('rotate', 'hide')
     else
-    {
-        rotateOverlay.style.opacity = '1';
-        rotateOverlay.style.zIndex = '100';
-    }
+        makeOverlay('rotate', 'show')
 }
 
 function handleFullScreen()
 {
-    let fullscreenOverlay = document.getElementById('fullscreen-overlay')
     var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
         (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
         (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
         (document.msFullscreenElement && document.msFullscreenElement !== null);
 
     if (isInFullScreen)
-    {
-        fullscreenOverlay.style.opacity = '0';
-        fullscreenOverlay.style.zIndex = '5';
-    }
+        makeOverlay('fullscreen', 'hide')
     else
-    {
-        fullscreenOverlay.style.opacity = '1';
-        fullscreenOverlay.style.zIndex = '90';
-    }
+        makeOverlay('fullscreen', 'show')
 }
 
 function handleWindowHeight(e)
 {
     let overlays = document.getElementsByClassName('overlay');
     for (let i = 0; i < overlays.length; i++)
-    {
         overlays[i].style.height = window.screen.height + 'px'
-    }
 }
 
 window.onload = () =>
@@ -67,12 +97,7 @@ window.onload = () =>
 
     entity.addEventListener("model-loaded", () =>
     {
-        let loadingOverlay = document.getElementById('loading-overlay')
-        setTimeout(() =>
-        {
-            loadingOverlay.style.opacity = '0';
-            loadingOverlay.style.zIndex = '5';
-        }, 500)
+        setTimeout(() => { makeOverlay('loading', 'hide') }, 500)
     })
 
     window.addEventListener("orientationchange", handleOrientation)
