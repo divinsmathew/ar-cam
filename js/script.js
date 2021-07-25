@@ -203,10 +203,11 @@ function resizeCanvas(modelCanvas, videoWidth, videoHeight)
         var scaledWidth = modelCanvas.height * scale;
         var marginLeft = ( modelCanvas.width - scaledWidth) / 2;
 
+        resizedContext.drawImage(modelCanvas, marginLeft, 0, videoHeight, videoWidth);
+
+
         console.log('scaled: ', scaledWidth, ',', scaledHeight)
 
-
-        resizedContext.drawImage(modelCanvas, 0, 0, scaledHeight, scaledWidth);
     }
 
     return resizedCanvas.toDataURL();
