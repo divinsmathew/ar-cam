@@ -35,9 +35,31 @@ button {
     font-size: 88px;
 }
 
+#fullscreen-button{
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 25;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    border: none;
+    border-radius: 50%;
+    min-width: 35px;
+    min-height: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px 22px;
+    background-color: rgba(0, 0, 0, 0.267);
+    cursor: pointer;
+    transform: rotate(45deg);
+    background-image: url("../img/move.png");
+}
+
 .toggler {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
     border: none;
     border-radius: 50%;
     min-width: 55px;

@@ -5,7 +5,6 @@
 <script src="./js/zingtouch.min.js"></script>
 <script src="./js/html2canvas.min.js"></script>
 <script src="./js/script.js"></script>
-
 <link rel="stylesheet" href="./css/styles.css">
 
 <body style="margin : 0px; overflow: hidden;">
@@ -14,8 +13,9 @@
       <div class="cssload-cssload-spinner"></div>
     </div>
   </div>
-  <a id="link"></a>
+  <a style="display: none;" id="link"></a>
   <!-- <div id="log"></div> -->
+  <button id="fullscreen-button" onclick="requestFullScreen()"></button>
   <section class="controls">
     <!-- <button onclick="X()">X</button>
     <button onclick="Y()">Y</button>

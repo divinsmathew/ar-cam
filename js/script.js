@@ -35,8 +35,6 @@ window.onload = () =>
                 overlay.style.zIndex = '20';
             }
         }, 500)
-
-        requestFullScreen()
     })
 
     window.addEventListener("orientationchange", function ()
@@ -116,19 +114,41 @@ window.onload = () =>
 
 function requestFullScreen()
 {
-    let element = document.body;
-    // Supports most browsers and their versions.
-    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+        (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+        (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+        (document.msFullscreenElement && document.msFullscreenElement !== null);
 
-    if (requestMethod)
-    { // Native full screen.
-        requestMethod.call(element);
-    } else if (typeof window.ActiveXObject !== "undefined")
-    { // Older IE.
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript !== null)
+    var docElm = document.documentElement;
+    if (!isInFullScreen)
+    {
+        if (docElm.requestFullscreen)
         {
-            wscript.SendKeys("{F11}");
+            docElm.requestFullscreen();
+        } else if (docElm.mozRequestFullScreen)
+        {
+            docElm.mozRequestFullScreen();
+        } else if (docElm.webkitRequestFullScreen)
+        {
+            docElm.webkitRequestFullScreen();
+        } else if (docElm.msRequestFullscreen)
+        {
+            docElm.msRequestFullscreen();
+        }
+    } else
+    {
+        if (document.exitFullscreen)
+        {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen)
+        {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen)
+        {
+            document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen)
+        {
+            document.msExitFullscreen();
         }
     }
 }
@@ -197,8 +217,6 @@ function toggleRotate()
 
 const getSnap = async () => 
 {
-
-
     // html2canvas(document.body).then(function(canvas) {
     //     //document.body.appendChild(canvas);
 
@@ -207,7 +225,6 @@ const getSnap = async () =>
     //     link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
     //     link.click();
     // })
-
 
     let aScene = document
         .querySelector("a-scene")
