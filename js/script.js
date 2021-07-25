@@ -198,7 +198,7 @@ function resizeCanvas(origCanvas, width, height)
         var scaledHeight = origCanvas.width * scale;
         var scaledWidth = origCanvas.height * scale;
         var marginLeft = ( origCanvas.width - scaledWidth) / 2;
-        resizedContext.drawImage(origCanvas, 0, 0, scaledWidth, scaledHeight);
+        resizedContext.drawImage(origCanvas, 0, 0, scaledHeight, scaledWidth);
     }
 
     return resizedCanvas.toDataURL();
