@@ -21,14 +21,28 @@ window.onload = () =>
 
     entity.addEventListener("model-loaded", () =>
     {
-        console.log(entity)
         let overlay = document.getElementById('overlay')
         setTimeout(() =>
         {
             overlay.style.opacity = '0';
             overlay.style.zIndex = '5';
         }, 500)
+
     })
+
+    window.addEventListener("orientationchange", function ()
+    {
+        let overlay = document.getElementById('overlay')
+        if (screen.orientation.angle != 90 || this.screen.orientation.angle != 270)
+        {
+            overlay.style.opacity = '1';
+            overlay.style.zIndex = '20';
+        }
+        overlay.style.opacity = '0';
+        overlay.style.zIndex = '5';
+
+
+    });
 
     var pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
@@ -42,14 +56,6 @@ window.onload = () =>
         entity.object3D.scale.set(scale, scale, scale)
         // log.innerText = factor;
     });
-
-    window.addEventListener("orientationchange", function() {
-        alert("the orientation of the device is now " + screen.orientation.angle);
-    });
-
-
-
-
 
     let swipe = new ZingTouch.Pan({
         numInputs: 1,
