@@ -27,7 +27,7 @@ window.onload = () =>
         {
             overlay.style.opacity = '0';
             overlay.style.zIndex = '5';
-        }, 2000)
+        }, 500)
     })
 
     var pinch = new ZingTouch.Distance();
