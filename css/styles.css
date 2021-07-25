@@ -35,27 +35,6 @@ button {
     font-size: 88px;
 }
 
-#fullscreen-button{
-    top: 10px;
-    left: 10px;
-    position: absolute;
-    z-index: 25;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    -ms-tap-highlight-color: transparent;
-    border: none;
-    border-radius: 50%;
-    min-width: 35px;
-    min-height: 35px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 22px 22px;
-    background-color: rgba(0, 0, 0, 0.267);
-    cursor: pointer;
-    transform: rotate(45deg);
-    background-image: url("../img/move.png");
-}
-
 .toggler {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -122,6 +101,47 @@ button {
     transition: opacity 500ms linear;
 }
 
+#rotate-overlay{
+    opacity: 0;
+}
+#rotate-overlay .lato{
+    position: absolute;
+    transform: translateY(180px);
+}
+
+#fullscreen-overlay{
+    flex-direction: column;
+    line-height: 3;
+    position: absolute;
+}
+
+#fullscreen-button{
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    border: none;
+    border-radius: 50%;
+    min-width: 55px;
+    min-height: 55px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px 30px;
+    background-color: rgba(0, 0, 0, 0.267);
+    cursor: pointer;
+    transform: rotate(45deg);
+    background-image: url("../img/move.png");
+}
+
+.lato{
+    font-family: 'Lato';
+    font-size: 20px;
+    letter-spacing: 12px;
+    color: #fff;
+    z-index: 10;
+}
+
+
+
 
 
 
@@ -163,7 +183,7 @@ button {
     content: '';
     display: block;
     position: relative;
-    transform: translate(42px, 23px) rotate(34deg);
+    transform: translate(42px, 23px) rotate(30deg);
     bottom: 0;
     height: 15px;
     width: 15px;

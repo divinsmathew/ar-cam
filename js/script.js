@@ -8,9 +8,45 @@ let entity = undefined;
 
 // var log;
 
+function handleOrientation()
+{
+    let rotateOverlay = document.getElementById('rotate-overlay')
+    if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
+    {
+        rotateOverlay.style.opacity = '0';
+        rotateOverlay.style.zIndex = '5';
+    }
+    else
+    {
+        rotateOverlay.style.opacity = '1';
+        rotateOverlay.style.zIndex = '20';
+    }
+}
+
+function handleFullScreen() {
+    let fullscreenOverlay = document.getElementById('fullscreen-overlay')
+    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+    (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+    (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+    if (isInFullScreen)
+    {
+        fullscreenOverlay.style.opacity = '0';
+        fullscreenOverlay.style.zIndex = '5';
+    }
+    else
+    {
+        fullscreenOverlay.style.opacity = '1';
+        fullscreenOverlay.style.zIndex = '20';
+    }
+}
 
 window.onload = () =>
 {
+    handleOrientation()
+    handleFullScreen()
+
     // log = document.getElementById('log');
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
@@ -26,30 +62,11 @@ window.onload = () =>
         {
             loadingOverlay.style.opacity = '0';
             loadingOverlay.style.zIndex = '5';
-
-            if (screen.orientation.angle != 90 && this.screen.orientation.angle != 270)
-            {
-                let rotateOverlay = document.getElementById('rotate-overlay')
-                rotateOverlay.style.opacity = '1';
-                rotateOverlay.style.zIndex = '20';
-            }
         }, 500)
     })
 
-    window.addEventListener("orientationchange", function ()
-    {
-        let rotateOverlay = document.getElementById('rotate-overlay')
-        if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
-        {
-            rotateOverlay.style.opacity = '0';
-            rotateOverlay.style.zIndex = '5';
-        }
-        else
-        {
-            rotateOverlay.style.opacity = '1';
-            rotateOverlay.style.zIndex = '20';
-        }
-    });
+    window.addEventListener("orientationchange", handleOrientation)
+    window.addEventListener("fullscreenchange", handleFullScreen, false)
 
     var pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
@@ -63,7 +80,6 @@ window.onload = () =>
         entity.object3D.scale.set(scale, scale, scale)
         // log.innerText = factor;
     });
-
     let swipe = new ZingTouch.Pan({
         numInputs: 1,
         threshold: 5

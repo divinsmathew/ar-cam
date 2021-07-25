@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="./css/styles.css">
 
 <body style="margin : 0px; overflow: hidden;">
+  <div class="overlay" id="fullscreen-overlay">
+    <div class="lato">enter fullscreen</div>
+    <button id="fullscreen-button" onclick="requestFullScreen()"></button>
+    <div class="lato">for the best experience</div>
+  </div>
   <div class="overlay" id="loading-overlay">
     <div class="cssload-wrap">
       <div class="cssload-cssload-spinner"></div>
@@ -26,11 +31,11 @@
       </div>
       <div class="arrow-head"></div>
     </div>
+    <span class="lato">rotate device</span>
   </div>
 
   <a style="display: none;" id="link"></a>
   <!-- <div id="log"></div> -->
-  <button id="fullscreen-button" onclick="requestFullScreen()"></button>
   <section class="controls">
     <!-- <button onclick="X()">X</button>
     <button onclick="Y()">Y</button>
