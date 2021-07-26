@@ -7,6 +7,8 @@ let rotateButton = undefined;
 let loadingOverlay = undefined;
 let fullscreenOverlay = undefined;
 let rotateOverlay = undefined;
+let snapOverlay = undefined;
+let previewOverlay = undefined;
 
 let entity = undefined;
 
@@ -22,9 +24,27 @@ window.onload = () =>
     loadingOverlay = document.getElementById('loading-overlay')
     fullscreenOverlay = document.getElementById('fullscreen-overlay')
     rotateOverlay = document.getElementById('rotate-overlay')
+    snapOverlay = document.getElementById('snap-overlay')
+    previewOverlay = document.getElementById('preview-overlay')
 
+    makeOverlay('snap', 'hide')
+    makeOverlay('preview', 'hide')
     handleOrientation()
     handleFullScreen()
+
+    document.getElementById("save-capture-button").addEventListener('click', () =>
+    {
+        let link = document.createElement("a");
+        link.setAttribute("download", new Date().toLocaleString().replaceAll(':', '-').replaceAll('/', '-') + " AR.png");
+        link.setAttribute("href", document.getElementById('preview-img').src);
+        link.click();
+        
+        makeOverlay('preview', 'hide')
+    });
+    document.getElementById("retake-button").addEventListener('click', () =>
+    {
+        makeOverlay('preview', 'hide')
+    });
 
     entity.addEventListener("model-loaded", () => { makeOverlay('loading', 'hide') })
     window.addEventListener("orientationchange", handleOrientation)
@@ -35,6 +55,7 @@ window.onload = () =>
         loadingOverlay.style.height = newHeight;
         fullscreenOverlay.style.height = newHeight;
         rotateOverlay.style.height = newHeight;
+        snapOverlay.style.height = newHeight;
     }, true);
 
     let activeRegion = ZingTouch.Region(document.body, false, false);

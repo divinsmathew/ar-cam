@@ -3,24 +3,42 @@ function makeOverlay(type, operation)
     function hideOverlay(overlay)
     {
         overlay.style.opacity = '0';
-        overlay.style.zIndex = '5';
-        setTimeout(() => { overlay.style.display = 'none'; }, 800);
+        setTimeout(() =>
+        {
+            overlay.style.zIndex = '5';
+            overlay.style.display = 'none';
+        }, 800);
     }
-    function showOverlay(overlay, zIndex)
+    function showOverlay(overlay, zIndex, display = 'flex', opacity = '1', delay = 0)
     {
-        overlay.style.display = 'flex';
-        overlay.style.opacity = '1';
         overlay.style.zIndex = zIndex;
+        overlay.style.display = display;
+        if (delay === 0)
+            overlay.style.opacity = opacity;
+        else
+            setTimeout(() => { overlay.style.opacity = opacity }, delay);
     }
 
     switch (type)
     {
+        case 'preview':
+            if (operation === 'show')
+            showOverlay(previewOverlay, '60')
+            else if (operation === 'hide')
+                hideOverlay(previewOverlay)
+            break;
+        case 'snap':
+            if (operation === 'show')
+                showOverlay(snapOverlay, '70', 'flex', '0.5', 700)
+            else if (operation === 'hide')
+                hideOverlay(snapOverlay)
+            break;
+
         case 'loading':
             if (operation === 'show')
                 showOverlay(loadingOverlay, '80')
             else if (operation === 'hide')
                 hideOverlay(loadingOverlay)
-
             break;
 
         case 'fullscreen':

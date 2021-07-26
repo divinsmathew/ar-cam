@@ -9,18 +9,27 @@ const defaultOptions = {
 
 const getSnap = async () => 
 {
-    let aScene = document
-        .querySelector("a-scene")
-        .components.screenshot.getCanvas("perspective");
-    let frame = await captureVideoFrame("video", "png");
-    aScene = await resizeCanvas(aScene, frame.width, frame.height);
-    frame = frame.dataUri;
+    makeOverlay('snap', 'show');
+    snapOverlay.classList.add('snap-overlay-anim');
 
-    let b64 = await mergeImages([frame, aScene]);
-    let link = document.createElement("a");
-    link.setAttribute("download", new Date().toLocaleString().replaceAll(':', '-').replaceAll('/', '-') + " AR.png");
-    link.setAttribute("href", b64);
-    link.click();
+
+    setTimeout(async () =>
+    {
+        snapOverlay.classList.remove('snap-overlay-anim');
+
+        let aScene = document
+            .querySelector("a-scene")
+            .components.screenshot.getCanvas("perspective");
+        let frame = await captureVideoFrame("video", "png");
+        aScene = await resizeCanvas(aScene, frame.width, frame.height);
+        frame = frame.dataUri;
+
+        let b64 = await mergeImages([frame, aScene]);
+        document.getElementById('preview-img').src = b64
+
+        makeOverlay('snap', 'hide');
+        makeOverlay('preview', 'show');
+    }, 700);
 }
 
 const mergeImages = (sources = [], options = {}) => new Promise(resolve =>

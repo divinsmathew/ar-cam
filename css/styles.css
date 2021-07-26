@@ -5,7 +5,9 @@ body {
 button {
   padding: 10px 15px;
 }
-
+* {
+  box-sizing: border-box;
+}
 .controls {
   background-color: #00000056;
   display: flex;
@@ -88,6 +90,14 @@ button {
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.37);
 }
 
+.lato {
+  font-family: "Lato";
+  font-size: 20px;
+  letter-spacing: 12px;
+  color: #fff;
+  z-index: 10;
+}
+
 .overlay {
   height: 100%;
   width: 100vw;
@@ -114,12 +124,82 @@ button {
   background-color: #2c2c2c8e;
 }
 
+#snap-overlay {
+  z-index: 70;
+  background-color: #fff;
+}
+#snap-overlay .lato {
+  color: black;
+}
+@keyframes snap {
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+.snap-overlay-anim {
+  animation: snap 500ms ease-in forwards 200ms;
+}
+#preview-overlay {
+  padding: 10px;
+  z-index: 60;
+  flex-direction: row;
+}
+.preview-container {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.preview-actions {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preview-actions button {
+  border: 1px #fff solid;
+  background-color: #2c2c2c;
+  color: #fff;
+  margin-top: 20px;
+  width: 80%;
+}
+.preview-actions button:active {
+  background-color: #fff;
+  color: #2c2c2c;
+  margin-top: 20px;
+  width: 80%;
+}
+#preview-img {
+  box-shadow: 0 0 15px 0px #00000038;
+  overflow: hidden;
+  object-fit: cover;
+  height: 100%;
+  width: 75%;
+}
+.preview-actions .lato {
+  margin: 10px 5px 50px 5px;
+  transform: translateX(8px);
+}
+.preview-actions .lato::after {
+  content: "";
+  margin: 7px auto 0 auto;
+  transform: translateX(-8px);
+  display: block;
+  width: 80px;
+  height: 1px;
+  background-color: #fff;
+}
+
 #fullscreen-overlay {
   z-index: 90;
   line-height: 3;
   flex-direction: column;
 }
-
 #fullscreen-button {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -135,14 +215,6 @@ button {
   cursor: pointer;
   transform: rotate(45deg);
   background-image: url("../img/move.png");
-}
-
-.lato {
-  font-family: "Lato";
-  font-size: 20px;
-  letter-spacing: 12px;
-  color: #fff;
-  z-index: 10;
 }
 
 :root {
@@ -177,7 +249,7 @@ button {
   content: "";
   display: block;
   position: relative;
-  transform: translate(42px, 23px) rotate(30deg);
+  transform: translate(37px, 23px) rotate(26deg);
   bottom: 0;
   height: 15px;
   width: 15px;
