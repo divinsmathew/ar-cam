@@ -38,7 +38,7 @@ window.onload = () =>
         link.setAttribute("download", new Date().toLocaleString().replaceAll(':', '-').replaceAll('/', '-') + " AR.png");
         link.setAttribute("href", document.getElementById('preview-img').src);
         link.click();
-        
+
         makeOverlay('preview', 'hide')
     });
     document.getElementById("retake-button").addEventListener('click', () =>
@@ -47,7 +47,9 @@ window.onload = () =>
     });
 
     entity.addEventListener("model-loaded", () => { makeOverlay('loading', 'hide') })
-    window.addEventListener("orientationchange", handleOrientation)
+    window.matchMedia('screen and (orientation:portrait)')
+            .addEventListener("change", e => handleOrientation(e))
+    //window.addEventListener("orientationchange", handleOrientation)
     window.addEventListener("fullscreenchange", handleFullScreen, false)
     window.addEventListener('resize', () =>
     {

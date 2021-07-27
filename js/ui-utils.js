@@ -23,7 +23,7 @@ function makeOverlay(type, operation)
     {
         case 'preview':
             if (operation === 'show')
-            showOverlay(previewOverlay, '60')
+                showOverlay(previewOverlay, '60')
             else if (operation === 'hide')
                 hideOverlay(previewOverlay)
             break;
@@ -57,12 +57,16 @@ function makeOverlay(type, operation)
     }
 }
 
-function handleOrientation()
+function handleOrientation(e)
 {
-    if (screen.orientation.angle == 90 || this.screen.orientation.angle == 270)
-        makeOverlay('rotate', 'hide')
-    else
-        makeOverlay('rotate', 'show')
+    if (!e) e = window.matchMedia('screen and (orientation:portrait)')
+
+    makeOverlay('rotate', e.matches ? 'show' : 'hide')
+    
+    // if (screen.orientation.angle == 90 || screen.orientation.angle == 270)
+    //     makeOverlay('rotate', 'hide')
+    // else
+    //     makeOverlay('rotate', 'show')
 }
 
 function handleFullScreen()
