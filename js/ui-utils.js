@@ -62,7 +62,7 @@ function handleOrientation(e)
     if (!e) e = window.matchMedia('screen and (orientation:portrait)')
 
     makeOverlay('rotate', e.matches ? 'show' : 'hide')
-    
+
     // if (screen.orientation.angle == 90 || screen.orientation.angle == 270)
     //     makeOverlay('rotate', 'hide')
     // else
@@ -93,32 +93,23 @@ function requestFullScreen()
     if (!isInFullScreen)
     {
         if (docElm.requestFullscreen)
-        {
             docElm.requestFullscreen();
-        } else if (docElm.mozRequestFullScreen)
-        {
+        else if (docElm.mozRequestFullScreen)
             docElm.mozRequestFullScreen();
-        } else if (docElm.webkitRequestFullScreen)
-        {
+        else if (docElm.webkitRequestFullScreen)
             docElm.webkitRequestFullScreen();
-        } else if (docElm.msRequestFullscreen)
-        {
+        else if (docElm.msRequestFullscreen)
             docElm.msRequestFullscreen();
-        }
-    } else
+    }
+    else
     {
         if (document.exitFullscreen)
-        {
             document.exitFullscreen();
-        } else if (document.webkitExitFullscreen)
-        {
+        else if (document.webkitExitFullscreen)
             document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen)
-        {
+        else if (document.mozCancelFullScreen)
             document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen)
-        {
+        else if (document.msExitFullscreen)
             document.msExitFullscreen();
-        }
     }
 }
