@@ -12,7 +12,6 @@ const getSnap = async () =>
     makeOverlay('snap', 'show');
     snapOverlay.classList.add('snap-overlay-anim');
 
-
     setTimeout(async () =>
     {
         snapOverlay.classList.remove('snap-overlay-anim');
