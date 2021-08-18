@@ -59,7 +59,7 @@ window.onload = () =>
         rotateOverlay.style.height = newHeight;
         snapOverlay.style.height = newHeight;
         previewOverlay.style.height = newHeight;
-        // document.getElementsByClassName('controls')[0].style.height = newHeight
+        document.getElementsByClassName('controls')[0].style.height = newHeight
     });
 
     let activeRegion = ZingTouch.Region(document.body, false, false);
