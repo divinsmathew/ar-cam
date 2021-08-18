@@ -58,6 +58,7 @@ window.onload = () =>
         fullscreenOverlay.style.height = newHeight;
         rotateOverlay.style.height = newHeight;
         snapOverlay.style.height = newHeight;
+        previewOverlay.style.height = newHeight;
         // document.getElementsByClassName('controls')[0].style.height = newHeight
     }, true);
 
