@@ -60,7 +60,7 @@ window.onload = () =>
         snapOverlay.style.height = newHeight;
         previewOverlay.style.height = newHeight;
         // document.getElementsByClassName('controls')[0].style.height = newHeight
-    }, true);
+    });
 
     let activeRegion = ZingTouch.Region(document.body, false, false);
     let containerElement = document.getElementsByTagName('a-scene')[0];
