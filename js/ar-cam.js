@@ -67,7 +67,7 @@ window.onload = () =>
     let pinch = new ZingTouch.Distance();
     activeRegion.bind(containerElement, pinch, function (event)
     {
-        if (rotateMode || moveMode) return;
+        //if (rotateMode || moveMode) return;
 
         let factor = event.detail.change / 500.0;
         let scale = entity.getAttribute('scale').x;
