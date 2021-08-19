@@ -10,6 +10,10 @@ let rotateOverlay = undefined;
 let snapOverlay = undefined;
 let previewOverlay = undefined;
 
+let positionLog = undefined
+let rotationLog = undefined
+let zoomLog = undefined
+
 let entity = undefined;
 
 // var log;
@@ -17,6 +21,9 @@ let entity = undefined;
 window.onload = () =>
 {
     // log = document.getElementById('log');
+    positionLog = document.getElementById('positionLog');
+    rotationLog = document.getElementById('rotationLog');
+    zoomLog = document.getElementById('zoomLog');
     entity = document.getElementById("theModel")
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
@@ -74,6 +81,8 @@ window.onload = () =>
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
         entity.object3D.scale.set(scale, scale, scale)
+
+        zoomLog.innerText = "Scale: " + scale.toFixed(3);
         // log.innerText = factor;
     });
     let swipe = new ZingTouch.Pan({
@@ -98,6 +107,7 @@ window.onload = () =>
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
+            positionLog.innerText = "Position: " + position.x.toFixed(3) + ', ' + position.y.toFixed(3) + ', ' + position.z.toFixed(3);
         }
         else if (rotateMode)
         {
@@ -119,6 +129,8 @@ window.onload = () =>
                 THREE.Math.degToRad(rotation.y),
                 THREE.Math.degToRad(rotation.z)
             );
+
+            rotationLog.innerText = "Rotation: " + rotation.x.toFixed(3) + ', ' + rotation.y.toFixed(3) + ', ' + rotation.z.toFixed(3);
         }
     });
 }
