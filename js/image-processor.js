@@ -28,7 +28,7 @@ const getSnap = async () =>
 
         makeOverlay('snap', 'hide');
         makeOverlay('preview', 'show');
-    }, 700);
+    }, 200);
 };
 
 const mergeImages = (sources = [], options = {}) => new Promise(resolve =>
