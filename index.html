@@ -69,7 +69,7 @@
         <button id="snap-button" onclick="getSnap()"></button>
         <button id="rotate-button" class="toggler" onclick="toggleRotate()"></button>
     </section>
-    <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false">
+    <a-scene id="scene" embedded arjs renderer="precision: medium" vr-mode-ui="enabled: false">
         <a-marker type="pattern" url="./pattern-nssnt.patt">
             <a-entity position="0 0 0" rotation="270 0 0">
                 <a-entity id='theModel' position="0 -0.75 0" rotation="0 0 0" scale="0.6 0.6 " 0.6
