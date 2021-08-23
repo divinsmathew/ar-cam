@@ -10,9 +10,9 @@ let rotateOverlay = undefined;
 let snapOverlay = undefined;
 let previewOverlay = undefined;
 
-let positionLog = undefined
-let rotationLog = undefined
-let zoomLog = undefined
+let positionLog = undefined;
+let rotationLog = undefined;
+let zoomLog = undefined;
 
 let entity = undefined;
 
@@ -24,20 +24,20 @@ window.onload = () =>
     positionLog = document.getElementById('positionLog');
     rotationLog = document.getElementById('rotationLog');
     zoomLog = document.getElementById('zoomLog');
-    entity = document.getElementById("theModel")
+    entity = document.getElementById("theModel");
     moveButton = document.getElementById('move-button');
     rotateButton = document.getElementById('rotate-button');
 
-    loadingOverlay = document.getElementById('loading-overlay')
-    fullscreenOverlay = document.getElementById('fullscreen-overlay')
-    rotateOverlay = document.getElementById('rotate-overlay')
-    snapOverlay = document.getElementById('snap-overlay')
-    previewOverlay = document.getElementById('preview-overlay')
+    loadingOverlay = document.getElementById('loading-overlay');
+    fullscreenOverlay = document.getElementById('fullscreen-overlay');
+    rotateOverlay = document.getElementById('rotate-overlay');
+    snapOverlay = document.getElementById('snap-overlay');
+    previewOverlay = document.getElementById('preview-overlay');
 
-    makeOverlay('snap', 'hide')
-    makeOverlay('preview', 'hide')
-    handleOrientation()
-    handleFullScreen()
+    makeOverlay('snap', 'hide');
+    makeOverlay('preview', 'hide');
+    handleOrientation();
+    handleFullScreen();
 
     document.getElementById("save-capture-button").addEventListener('click', () =>
     {
@@ -46,18 +46,18 @@ window.onload = () =>
         link.setAttribute("href", document.getElementById('preview-img').src);
         link.click();
 
-        makeOverlay('preview', 'hide')
+        makeOverlay('preview', 'hide');
     });
     document.getElementById("retake-button").addEventListener('click', () =>
     {
-        makeOverlay('preview', 'hide')
+        makeOverlay('preview', 'hide');
     });
 
-    entity.addEventListener("model-loaded", () => { makeOverlay('loading', 'hide') })
+    entity.addEventListener("model-loaded", () => { makeOverlay('loading', 'hide'); });
     window.matchMedia('screen and (orientation:portrait)')
-            .addEventListener("change", e => handleOrientation(e))
+        .addEventListener("change", e => handleOrientation(e));
     //window.addEventListener("orientationchange", handleOrientation)
-    window.addEventListener("fullscreenchange", handleFullScreen, false)
+    window.addEventListener("fullscreenchange", handleFullScreen, false);
     window.addEventListener('resize', () =>
     {
         let newHeight = window.innerHeight + 'px';
@@ -66,7 +66,7 @@ window.onload = () =>
         rotateOverlay.style.height = newHeight;
         snapOverlay.style.height = newHeight;
         previewOverlay.style.height = newHeight;
-        document.getElementsByClassName('controls')[0].style.height = newHeight
+        document.getElementsByClassName('controls')[0].style.height = newHeight;
     });
 
     let activeRegion = ZingTouch.Region(document.body, false, false);
@@ -80,7 +80,7 @@ window.onload = () =>
         let scale = entity.getAttribute('scale').x;
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
-        entity.object3D.scale.set(scale, scale, scale)
+        entity.object3D.scale.set(scale, scale, scale);
 
         zoomLog.innerText = "Scale: " + scale.toFixed(3);
         // log.innerText = factor;
@@ -88,7 +88,7 @@ window.onload = () =>
     let swipe = new ZingTouch.Pan({
         numInputs: 1,
         threshold: 5
-    })
+    });
     activeRegion.bind(containerElement, swipe, function (event)
     {
         if (moveMode)
@@ -133,4 +133,4 @@ window.onload = () =>
             rotationLog.innerText = "Rotation: " + rotation.x.toFixed(3) + ', ' + rotation.y.toFixed(3) + ', ' + rotation.z.toFixed(3);
         }
     });
-}
+};

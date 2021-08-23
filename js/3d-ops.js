@@ -12,13 +12,13 @@ function calculateDirection(angle)
     */
 
     if (angle <= 135 && angle > 45)
-        return 'up'
+        return 'up';
     else if (angle <= 225 && angle > 135)
-        return 'left'
+        return 'left';
     else if (angle <= 315 && angle > 225)
-        return 'down'
+        return 'down';
     else
-        return 'right'
+        return 'right';
 
     // if (angle === 90)
     //     return 'up'
@@ -35,11 +35,11 @@ function calculateDirection(angle)
 function toggleMove()
 {
     if (moveMode)
-        moveButton.classList.remove('toggle-active')
+        moveButton.classList.remove('toggle-active');
     else
     {
         moveButton.classList.add('toggle-active');
-        rotateButton.classList.remove('toggle-active')
+        rotateButton.classList.remove('toggle-active');
         rotateMode = false;
     }
 
@@ -49,11 +49,11 @@ function toggleMove()
 function toggleRotate()
 {
     if (rotateMode)
-        rotateButton.classList.remove('toggle-active')
+        rotateButton.classList.remove('toggle-active');
     else
     {
         rotateButton.classList.add('toggle-active');
-        moveButton.classList.remove('toggle-active')
+        moveButton.classList.remove('toggle-active');
         moveMode = false;
     }
 

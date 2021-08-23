@@ -13,71 +13,71 @@
 <link rel="stylesheet" href="./css/styles.css">
 
 <body style="margin : 0px; overflow: hidden;">
-  <div class="overlay" id="fullscreen-overlay">
-    <div class="lato">enter fullscreen</div>
-    <button id="fullscreen-button" onclick="requestFullScreen()"></button>
-    <div class="lato">for the best experience</div>
-  </div>
-  <div class="overlay" id="loading-overlay">
-    <div class="cssload-wrap">
-      <div class="cssload-cssload-spinner"></div>
+    <div class="overlay" id="fullscreen-overlay">
+        <div class="lato">enter fullscreen</div>
+        <button id="fullscreen-button" onclick="requestFullScreen()"></button>
+        <div class="lato">for the best experience</div>
     </div>
-  </div>
-  <div class="overlay" id="rotate-overlay">
-    <div class="phone shadow">
-      <div class="screen"></div>
+    <div class="overlay" id="loading-overlay">
+        <div class="cssload-wrap">
+            <div class="cssload-cssload-spinner"></div>
+        </div>
     </div>
-    <div class="phone rotate90">
-      <div class="screen"></div>
+    <div class="overlay" id="rotate-overlay">
+        <div class="phone shadow">
+            <div class="screen"></div>
+        </div>
+        <div class="phone rotate90">
+            <div class="screen"></div>
+        </div>
+        <div class="arrow-wrap">
+            <div class="arrow-circle">
+                <div class="arrow"></div>
+            </div>
+            <div class="arrow-head"></div>
+        </div>
+        <span class="lato">rotate device</span>
     </div>
-    <div class="arrow-wrap">
-      <div class="arrow-circle">
-        <div class="arrow"></div>
-      </div>
-      <div class="arrow-head"></div>
+    <div class="overlay" id="snap-overlay">
+        <span class="lato">capturing...</span>
     </div>
-    <span class="lato">rotate device</span>
-  </div>
-  <div class="overlay" id="snap-overlay">
-    <span class="lato">capturing...</span>
-  </div>
-  <div class="overlay" id="preview-overlay">
-    <div class="preview-container">
-      <img id="preview-img" src="" alt="preview">
-      <div class="preview-actions">
-        <span class="lato">preview</span>
-        <button id="save-capture-button">save</button>
-        <button id="retake-button">retake</button>
-      </div>
+    <div class="overlay" id="preview-overlay">
+        <div class="preview-container">
+            <img id="preview-img" src="" alt="preview">
+            <div class="preview-actions">
+                <span class="lato">preview</span>
+                <button id="save-capture-button">save</button>
+                <button id="retake-button">retake</button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- <div id="log"></div> -->
-  <section class="log">
-      <div id="positionLog">Position: 0 0 0</div>
-      <div id="rotationLog">Rotation: 0 0 0</div>
-      <div id="zoomLog">Scale: 1</div>
-  </section>
-  <section class="controls">
-    <!--
+    <!-- <div id="log"></div> -->
+    <section class="log">
+        <div id="positionLog">Position: 0 0 0</div>
+        <div id="rotationLog">Rotation: 0 0 0</div>
+        <div id="zoomLog">Scale: 1</div>
+    </section>
+    <section class="controls">
+        <!--
     <button onclick="X()">X</button>
     <button onclick="Y()">Y</button>
     <button onclick="Z()">Z</button>
     <button onclick="P()">P</button> 
     -->
-    <button id="move-button" class="toggler" onclick="toggleMove()"></button>
-    <button id="snap-button" onclick="getSnap()"></button>
-    <button id="rotate-button" class="toggler" onclick="toggleRotate()"></button>
-  </section>
-  <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false">
-    <a-marker type="pattern" url="./pattern-nssnt.patt">
-      <a-entity position="0 0 0.85" rotation="270 0 0">
-        <a-entity id='theModel' position="0 0 0" rotation="0 0 0" scale="1 1 1" gltf-model="./mahabali_opt.glb">
-        </a-entity>
-      </a-entity>
-    </a-marker>
-    <a-entity id="camera" camera></a-entity>
-  </a-scene>
+        <button id="move-button" class="toggler" onclick="toggleMove()"></button>
+        <button id="snap-button" onclick="getSnap()"></button>
+        <button id="rotate-button" class="toggler" onclick="toggleRotate()"></button>
+    </section>
+    <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false">
+        <a-marker type="pattern" url="./pattern-nssnt.patt">
+            <a-entity position="0 0 0.85" rotation="270 0 0">
+                <a-entity id='theModel' position="0 0 0" rotation="0 0 0" scale="1 1 1" gltf-model="./Maveli GLB.glb">
+                </a-entity>
+            </a-entity>
+        </a-marker>
+        <a-entity id="camera" camera></a-entity>
+    </a-scene>
 </body>
 
 </html>

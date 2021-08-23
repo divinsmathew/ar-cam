@@ -16,52 +16,52 @@ function makeOverlay(type, operation)
         if (delay === 0)
             overlay.style.opacity = opacity;
         else
-            setTimeout(() => { overlay.style.opacity = opacity }, delay);
+            setTimeout(() => { overlay.style.opacity = opacity; }, delay);
     }
 
     switch (type)
     {
         case 'preview':
             if (operation === 'show')
-                showOverlay(previewOverlay, '60')
+                showOverlay(previewOverlay, '60');
             else if (operation === 'hide')
-                hideOverlay(previewOverlay)
+                hideOverlay(previewOverlay);
             break;
         case 'snap':
             if (operation === 'show')
-                showOverlay(snapOverlay, '70', 'flex', '0.5', 700)
+                showOverlay(snapOverlay, '70', 'flex', '0.5', 700);
             else if (operation === 'hide')
-                hideOverlay(snapOverlay)
+                hideOverlay(snapOverlay);
             break;
 
         case 'loading':
             if (operation === 'show')
-                showOverlay(loadingOverlay, '80')
+                showOverlay(loadingOverlay, '80');
             else if (operation === 'hide')
-                hideOverlay(loadingOverlay)
+                hideOverlay(loadingOverlay);
             break;
 
         case 'fullscreen':
             if (operation === 'show')
-                showOverlay(fullscreenOverlay, '90')
+                showOverlay(fullscreenOverlay, '90');
             else if (operation === 'hide')
-                hideOverlay(fullscreenOverlay)
+                hideOverlay(fullscreenOverlay);
             break;
 
         case 'rotate':
             if (operation === 'show')
-                showOverlay(rotateOverlay, '100')
+                showOverlay(rotateOverlay, '100');
             else if (operation === 'hide')
-                hideOverlay(rotateOverlay)
+                hideOverlay(rotateOverlay);
             break;
     }
 }
 
 function handleOrientation(e)
 {
-    if (!e) e = window.matchMedia('screen and (orientation:portrait)')
+    if (!e) e = window.matchMedia('screen and (orientation:portrait)');
 
-    makeOverlay('rotate', e.matches ? 'show' : 'hide')
+    makeOverlay('rotate', e.matches ? 'show' : 'hide');
 
     // if (screen.orientation.angle == 90 || screen.orientation.angle == 270)
     //     makeOverlay('rotate', 'hide')
@@ -77,9 +77,9 @@ function handleFullScreen()
         (document.msFullscreenElement && document.msFullscreenElement !== null);
 
     if (isInFullScreen)
-        makeOverlay('fullscreen', 'hide')
+        makeOverlay('fullscreen', 'hide');
     else
-        makeOverlay('fullscreen', 'hide')
+        makeOverlay('fullscreen', 'hide');
 }
 
 function requestFullScreen()

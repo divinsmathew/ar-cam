@@ -24,12 +24,12 @@ const getSnap = async () =>
         frame = frame.dataUri;
 
         let b64 = await mergeImages([frame, aScene]);
-        document.getElementById('preview-img').src = b64
+        document.getElementById('preview-img').src = b64;
 
         makeOverlay('snap', 'hide');
         makeOverlay('preview', 'show');
     }, 700);
-}
+};
 
 const mergeImages = (sources = [], options = {}) => new Promise(resolve =>
 {
@@ -102,7 +102,7 @@ const captureVideoFrame = (video, format) => new Promise(resolve =>
     canvas.getContext('2d').drawImage(video, 0, 0);
     var dataUri = canvas.toDataURL('image/' + format);
     var data = dataUri.split(',')[1];
-    var mimeType = dataUri.split(';')[0].slice(5)
+    var mimeType = dataUri.split(';')[0].slice(5);
 
     var bytes = window.atob(data);
     var buf = new ArrayBuffer(bytes.length);
