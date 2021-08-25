@@ -100,10 +100,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.y += 0.025; break;
-                case 'left': position.x -= 0.025; break;
-                case 'down': position.y -= 0.025; break;
-                case 'right': position.x += 0.025; break;
+                case 'up': position.y += 0.035; break;
+                case 'left': position.x -= 0.035; break;
+                case 'down': position.y -= 0.035; break;
+                case 'right': position.x += 0.035; break;
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
