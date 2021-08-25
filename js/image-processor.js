@@ -7,7 +7,7 @@ const defaultOptions = {
     crossOrigin: undefined
 };
 
-const getSnap = async () => 
+const getSnap = () => 
 {
     makeOverlay('snap', 'show');
     snapOverlay.classList.add('snap-overlay-anim');
@@ -28,7 +28,7 @@ const getSnap = async () =>
 
         makeOverlay('snap', 'hide');
         makeOverlay('preview', 'show');
-    }, 100);
+    }, 200);
 };
 
 const mergeImages = (sources = [], options = {}) => new Promise(resolve =>

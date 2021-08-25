@@ -29,7 +29,7 @@ function makeOverlay(type, operation)
             break;
         case 'snap':
             if (operation === 'show')
-                showOverlay(snapOverlay, '70', 'flex', '0.5', 700);
+                showOverlay(snapOverlay, '70', 'flex', '0.5', 200);
             else if (operation === 'hide')
                 hideOverlay(snapOverlay);
             break;
