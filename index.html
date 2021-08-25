@@ -3,6 +3,7 @@
 <script src="./js/vendor/aframe.min.js"></script>
 <script src="./js/vendor/aframe-ar.js"></script>
 <script src="./js/vendor/zingtouch.min.js"></script>
+<script src="./js/vendor/pixastic-standalone.js"></script>
 
 <script src="./js/3d-ops.js"></script>
 <script src="./js/ar-cam.js"></script>
@@ -71,7 +72,7 @@
     </section>
     <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false"
         renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true;">
-        <a-marker type="pattern" url="./assets/custom-marker/pattern-nssnt.patt" smooth="true">
+        <a-marker preset="hiro" type="pattern" url="./assets/custom-marker/pattern-nssnt.patt" smooth="true">
             <a-entity position="0 0 0" rotation="270 0 0">
                 <a-entity id='theModel' position="0 -0.75 0" rotation="0 0 0" scale="0.35 0.35 0.35"
                     gltf-model="./assets/3d-models/maveli.glb">
