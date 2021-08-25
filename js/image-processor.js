@@ -30,6 +30,19 @@ const getSnap = async () =>
         makeOverlay('preview', 'show');
     }, 200);
 };
+function contrastImage(imgData, contrast)
+{  //input range [-100..100]
+    var d = imgData.data;
+    contrast = (contrast / 100) + 1;  //convert to decimal & shift range: [0..2]
+    var intercept = 128 * (1 - contrast);
+    for (var i = 0; i < d.length; i += 4)
+    {   //r,g,b,a
+        d[i] = d[i] * contrast + intercept;
+        d[i + 1] = d[i + 1] * contrast + intercept;
+        d[i + 2] = d[i + 2] * contrast + intercept;
+    }
+    return imgData;
+}
 
 const mergeImages = (sources = [], options = {}) => new Promise(resolve =>
 {
@@ -63,8 +76,9 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve =>
             canvas.width = getSize('width');
             canvas.height = getSize('height');
 
-            images.forEach(image =>
+            images.forEach((image, index) =>
             {
+                if (index === 1) ctx.filter = "brightness(160%) contrast(85%)";
                 ctx.globalAlpha = image.opacity ? image.opacity : 1;
                 return ctx.drawImage(image.img, image.x || 0, image.y || 0);
             });
