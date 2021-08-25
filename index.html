@@ -69,8 +69,9 @@
         <button id="snap-button" onclick="getSnap()"></button>
         <button id="rotate-button" class="toggler" onclick="toggleRotate()"></button>
     </section>
-    <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false">
-        <a-marker type="pattern" url="./pattern-nssnt.patt">
+    <a-scene id="scene" embedded arjs vr-mode-ui="enabled: false"
+        renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true;">
+        <a-marker type="pattern" preset="hiro" url="./pattern-nssnt.patt" smooth="true">
             <a-entity position="0 0 0" rotation="270 0 0">
                 <a-entity id='theModel' position="0 -0.75 0" rotation="0 0 0" scale="0.3 0.3 0.3"
                     gltf-model="./Maveli GLB.glb">
