@@ -1,6 +1,6 @@
 const defaultOptions = {
     format: 'image/png',
-    quality: 0.92,
+    quality: 0.98,
     width: undefined,
     height: undefined,
     Canvas: undefined,
