@@ -66,6 +66,8 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve =>
             images.forEach((image, index) =>
             {
                 if (index === 1) ctx.filter = "brightness(160%) contrast(85%)";
+                ctx.imageSmoothingEnabled = true;
+                ctx.translate(0.5, 0.5);
                 ctx.globalAlpha = image.opacity ? image.opacity : 1;
                 return ctx.drawImage(image.img, image.x || 0, image.y || 0);
             });
