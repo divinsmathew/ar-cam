@@ -42,7 +42,9 @@ window.onload = () =>
     document.getElementById("save-capture-button").addEventListener('click', () =>
     {
         let link = document.createElement("a");
-        link.setAttribute("download", new Date().toLocaleString().replaceAll(':', '-').replaceAll('/', '-') + " AR.png");
+        let fileName = new Date().toLocaleString().replaceAll(':', '-').replaceAll('/', '-') + " AR.png";
+        link.download = fileName;
+        link.setAttribute("download", fileName);
         link.setAttribute("href", document.getElementById('preview-img').src);
         link.click();
 
