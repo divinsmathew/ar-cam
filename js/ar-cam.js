@@ -18,7 +18,7 @@ let entity = undefined;
 
 const rotationOffset = 1.5;
 const positionOffset = 0.03;
-const scaleOffset = 200;
+const scaleOffset = 0.01;
 
 // var log;
 
@@ -82,7 +82,7 @@ window.onload = () =>
     {
         //if (rotateMode || moveMode) return;
 
-        let factor = event.detail.change / scaleOffset;
+        let factor = event.detail.change * scaleOffset;
         let scale = entity.getAttribute('scale').x;
         //if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
