@@ -84,7 +84,7 @@ window.onload = () =>
 
         let factor = event.detail.change / scaleOffset;
         let scale = entity.getAttribute('scale').x;
-        if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
+        //if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
         entity.object3D.scale.set(scale, scale, scale);
 
