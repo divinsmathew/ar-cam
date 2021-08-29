@@ -16,6 +16,10 @@ let zoomLog = undefined;
 
 let entity = undefined;
 
+const rotationOffset = 1.5;
+const positionOffset = 0.03;
+const scaleOffset = 200;
+
 // var log;
 
 window.onload = () =>
@@ -78,7 +82,7 @@ window.onload = () =>
     {
         //if (rotateMode || moveMode) return;
 
-        let factor = event.detail.change / 500.0;
+        let factor = event.detail.change / scaleOffset;
         let scale = entity.getAttribute('scale').x;
         if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
@@ -102,10 +106,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.y += 0.035; break;
-                case 'left': position.x -= 0.035; break;
-                case 'down': position.y -= 0.035; break;
-                case 'right': position.x += 0.035; break;
+                case 'up': position.y += positionOffset; break;
+                case 'left': position.x -= positionOffset; break;
+                case 'down': position.y -= positionOffset; break;
+                case 'right': position.x += positionOffset; break;
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
@@ -120,10 +124,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': rotation.x -= 1.5; break;
-                case 'down': rotation.x += 1.5; break;
-                case 'left': rotation.y -= 1.5; break;
-                case 'right': rotation.y += 1.5; break;
+                case 'up': rotation.x -= rotationOffset; break;
+                case 'down': rotation.x += rotationOffset; break;
+                case 'left': rotation.y -= rotationOffset; break;
+                case 'right': rotation.y += rotationOffset; break;
             }
 
             entity.object3D.rotation.set(
