@@ -34,7 +34,7 @@ A marker based augmented reality camera app for the web. Powered by [AR.js](http
     <td>Implements AR on the web.</td>
   </tr>
   <tr>
-    <td> <a href="https://github.com/aframevr/aframe/"> A-FRAME </a> </td>
+    <td> <a href="https://github.com/aframevr/aframe/"> A-Frame </a> </td>
     <td rowspan="2">Renders augmented content.</td>
   </tr>
   <tr>
