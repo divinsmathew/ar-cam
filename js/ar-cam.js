@@ -16,9 +16,9 @@ let zoomLog = undefined;
 
 let entity = undefined;
 
-const rotationOffset = 1.5;
-const positionOffset = 0.03;
-const scaleOffset = 0.01;
+const rotationSensitivity = 1.5;
+const positionSensitivity = 0.03;
+const scaleSensitivity = 0.01;
 
 // var log;
 
@@ -82,7 +82,7 @@ window.onload = () =>
     {
         //if (rotateMode || moveMode) return;
 
-        let factor = event.detail.change * scaleOffset;
+        let factor = event.detail.change * scaleSensitivity;
         let scale = entity.getAttribute('scale').x;
         //if ((scale > 5 && factor > 0) || (scale < 0.05 && factor < 0)) return;
         scale += factor;
@@ -106,10 +106,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': position.y += positionOffset; break;
-                case 'left': position.x -= positionOffset; break;
-                case 'down': position.y -= positionOffset; break;
-                case 'right': position.x += positionOffset; break;
+                case 'up': position.y += positionSensitivity; break;
+                case 'left': position.x -= positionSensitivity; break;
+                case 'down': position.y -= positionSensitivity; break;
+                case 'right': position.x += positionSensitivity; break;
             }
 
             entity.object3D.position.set(position.x, position.y, position.z);
@@ -124,10 +124,10 @@ window.onload = () =>
 
             switch (direction)
             {
-                case 'up': rotation.x -= rotationOffset; break;
-                case 'down': rotation.x += rotationOffset; break;
-                case 'left': rotation.y -= rotationOffset; break;
-                case 'right': rotation.y += rotationOffset; break;
+                case 'up': rotation.x -= rotationSensitivity; break;
+                case 'down': rotation.x += rotationSensitivity; break;
+                case 'left': rotation.y -= rotationSensitivity; break;
+                case 'right': rotation.y += rotationSensitivity; break;
             }
 
             entity.object3D.rotation.set(
