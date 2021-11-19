@@ -53,7 +53,7 @@ All AR.js web apps in general, have to be run on a server. You can use local ser
 
 ## :rocket: Demo
 
-Checkout a live deployment [here](https://diozz.github.io/ar-cam/).
+Checkout a live deployment [here](https://divinsmathew.github.io/ar-cam/).
 
 ## Contributions
 
