@@ -1,6 +1,6 @@
 # AR Cam
 
-A marker based augmented reality camera app for the web. Powered by [AR.js](https://github.com/AR-js-org/AR.js). Fast, light-weight and works on any phone with [WebGL](https://get.webgl.org/) and [WebRTC](https://webrtc.org/).
+A marker based augmented reality camera app for the web. Powered by [AR.js](https://github.com/AR-js-org/AR.js). Fast, light-weight and works on any mobile/desktop browser with [WebGL](https://get.webgl.org/) and [WebRTC](https://webrtc.org/).
 
 ![doggy](https://user-images.githubusercontent.com/13608193/131313178-18a26028-912c-4712-9029-4d7e00ed41cd.gif)
 
